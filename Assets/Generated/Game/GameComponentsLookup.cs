@@ -8,15 +8,45 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
+    public const int Asset = 0;
+    public const int Camera = 1;
+    public const int CharacterView = 2;
+    public const int ObjectsView = 3;
+    public const int Player = 4;
+    public const int Position = 5;
+    public const int Rotation = 6;
+    public const int Speed = 7;
+    public const int DataService = 8;
+    public const int ViewCharacterService = 9;
+    public const int ViewObjectsService = 10;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 11;
 
     public static readonly string[] componentNames = {
-
+        "Asset",
+        "Camera",
+        "CharacterView",
+        "ObjectsView",
+        "Player",
+        "Position",
+        "Rotation",
+        "Speed",
+        "DataService",
+        "ViewCharacterService",
+        "ViewObjectsService"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(BoxLoader.AssetComponent),
+        typeof(BoxLoader.CameraComponent),
+        typeof(BoxLoader.CharacterViewComponent),
+        typeof(BoxLoader.ObjectsViewComponent),
+        typeof(BoxLoader.PlayerComponent),
+        typeof(BoxLoader.PositionComponent),
+        typeof(BoxLoader.RotationComponent),
+        typeof(BoxLoader.SpeedComponent),
+        typeof(DataServiceComponent),
+        typeof(ViewCharacterServiceComponent),
+        typeof(ViewObjectsServiceComponent)
     };
 }
