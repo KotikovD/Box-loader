@@ -1,0 +1,72 @@
+{
+    "name": "Input",
+    "maps": [
+        {
+            "name": "Move",
+            "id": "3a24c27f-9b41-4c89-b9f5-a7690835a036",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "c9e55bc2-e040-4166-895d-a936e485e250",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fdfa516c-86d6-44f9-9022-d8a4eaca9cb7",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Use",
+            "id": "1d3ab15f-4ea4-4015-8384-f08a2b3d6c39",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "1191448a-f80f-41b8-89c0-7bbd5873aed1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "01e747f7-ac7c-4dca-8307-5c4b0c0f9d90",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Mouse",
+            "bindingGroup": "Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
