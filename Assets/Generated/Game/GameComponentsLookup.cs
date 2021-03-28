@@ -8,21 +8,25 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Asset = 0;
-    public const int Camera = 1;
-    public const int CharacterView = 2;
-    public const int ObjectsView = 3;
-    public const int Player = 4;
-    public const int Position = 5;
-    public const int Rotation = 6;
-    public const int Speed = 7;
-    public const int DataService = 8;
-    public const int ViewCharacterService = 9;
-    public const int ViewObjectsService = 10;
+    public const int AnyPlayerListener = 0;
+    public const int Asset = 1;
+    public const int Camera = 2;
+    public const int CharacterView = 3;
+    public const int ObjectsView = 4;
+    public const int Player = 5;
+    public const int Position = 6;
+    public const int Rotation = 7;
+    public const int Speed = 8;
+    public const int DataService = 9;
+    public const int PositionListener = 10;
+    public const int SceneService = 11;
+    public const int ViewCharacterService = 12;
+    public const int ViewObjectsService = 13;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
+        "AnyPlayerListener",
         "Asset",
         "Camera",
         "CharacterView",
@@ -32,11 +36,14 @@ public static class GameComponentsLookup {
         "Rotation",
         "Speed",
         "DataService",
+        "PositionListener",
+        "SceneService",
         "ViewCharacterService",
         "ViewObjectsService"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(AnyPlayerListenerComponent),
         typeof(BoxLoader.AssetComponent),
         typeof(BoxLoader.CameraComponent),
         typeof(BoxLoader.CharacterViewComponent),
@@ -46,6 +53,8 @@ public static class GameComponentsLookup {
         typeof(BoxLoader.RotationComponent),
         typeof(BoxLoader.SpeedComponent),
         typeof(DataServiceComponent),
+        typeof(PositionListenerComponent),
+        typeof(SceneServiceComponent),
         typeof(ViewCharacterServiceComponent),
         typeof(ViewObjectsServiceComponent)
     };

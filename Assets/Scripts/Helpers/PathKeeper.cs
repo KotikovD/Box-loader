@@ -7,7 +7,7 @@ namespace BoxLoader
 		public const string PrefabsFolder = "Prefabs";
 
 		// Scriptable Objects names
-		public const string Camera = "Camera";
-		public const string Player = "Player";
+		public const string Camera = "CameraData";
+		public const string Player = "PlayerData";
 	}
 }

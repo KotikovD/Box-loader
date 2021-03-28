@@ -6,13 +6,19 @@ namespace BoxLoader
 		{
 
 			// Init
+			
+			
 			Add(new InitializeDataSystem(contexts));
+			Add(new InitializeSceneSystem(contexts));
 			Add(new InitializeCharacterViewSystem(contexts));
 			Add(new InitializeObjectsViewSystem(contexts));
 
-			
+			Add(new InitializePlayerInputSystem(contexts));
 			Add(new InitializePlayerSystem(contexts));
 			Add(new InitializeCameraSystem(contexts));
+			Add(new GameEventSystems(contexts));
+			Add(new CameraMoveEventSystem(contexts));
+			
 			
 			// Add(new InitializeNpcSystem(contexts));
 			// Add(new InitializeLevelSystem(contexts));
@@ -21,7 +27,7 @@ namespace BoxLoader
 			//
 			//
 			// // Input
-			// Add(new InputRegisterSystem(contexts));
+			 
 			// Add(new ApplyPlayerUnitMovementSystem(contexts));
 			
 			

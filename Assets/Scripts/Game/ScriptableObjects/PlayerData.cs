@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/Player")]
-public class Player : ScriptableObject
+[CreateAssetMenu(menuName = "Data/PlayerData")]
+public class PlayerData : ScriptableObject
 {
 	public float Speed;
 	public string AssetName;

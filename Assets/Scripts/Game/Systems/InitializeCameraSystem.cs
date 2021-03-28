@@ -2,26 +2,34 @@ using BoxLoader;
 using Entitas;
 using UnityEngine;
 
-public class InitializeCameraSystem : IInitializeSystem
+namespace BoxLoader
 {
-	private Contexts _contexts;
-	private GameEntity _cameraEntity;
-	
-	public InitializeCameraSystem(Contexts contexts)
+	public class InitializeCameraSystem : IInitializeSystem
 	{
-		_contexts = contexts;
+		private Contexts _contexts;
+		private GameEntity _cameraEntity;
+
+
+		public InitializeCameraSystem(Contexts contexts)
+		{
+			_contexts = contexts;
+		}
+
+		public void Initialize()
+		{
+			
+			
+			var cameraData = _contexts.game.dataService.value.CameraData;
+			var playerPosition = _contexts.game.dataService.value.PlayerData.StartPosition;
+			var cameraPosition = Utils.CalculateOffsetPosition(playerPosition, cameraData.OffsetByPlayer);
+
+			_cameraEntity = _contexts.game.CreateEntity();
+			_cameraEntity.AddPosition(cameraPosition);
+			_cameraEntity.AddRotation(Quaternion.Euler(cameraData.StartRotation));
+			_cameraEntity.isCamera = true;
+			var camera = _contexts.game.sceneService.value.Camera;
+			var view = camera.GetComponent<ObjectsView>();
+			view.InitializeView(_cameraEntity);
+		}
 	}
-	
-	public void Initialize()
-	{
-		var cameraData = _contexts.game.dataService.value.Camera;
-		_cameraEntity = _contexts.game.CreateEntity();
-		_cameraEntity.AddPosition(cameraData.StartPosition);
-		_cameraEntity.AddRotation(Quaternion.Euler(cameraData.StartRotation));
-		_cameraEntity.isCamera = true;
-		var gameObject = GameObject.FindWithTag("MainCamera");
-		var view = gameObject.GetComponent<ObjectsView>();
-		view.InitializeView(_cameraEntity);
-	}
-	
 }

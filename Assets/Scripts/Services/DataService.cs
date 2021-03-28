@@ -1,16 +1,15 @@
-using UnityEngine;
 
 namespace BoxLoader
 {
 	public class DataService : IDataService
 	{
-		public Camera Camera { get; }
-		public Player Player { get; }
+		public CameraData CameraData { get; }
+		public PlayerData PlayerData { get; }
 
 		public DataService(IDataLoader loader)
 		{
-			Camera = loader.GetData<Camera>(PathKeeper.Camera);
-			Player = loader.GetData<Player>(PathKeeper.Player);
+			CameraData = loader.GetData<CameraData>(PathKeeper.Camera);
+			PlayerData = loader.GetData<PlayerData>(PathKeeper.Player);
 		}
 
 	}

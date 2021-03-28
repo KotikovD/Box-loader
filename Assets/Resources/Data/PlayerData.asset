@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b32e6583c3cad478fc11447623847f, type: 3}
-  m_Name: Camera
+  m_Script: {fileID: 11500000, guid: 0df0aedf991c42a6ae315b9d9992a026, type: 3}
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
-  LerpSpeed: 0.4
-  StartPosition: {x: 12, y: 24, z: -16}
-  StartRotation: {x: 55, y: -45, z: 0}
+  Speed: 1
+  AssetName: Character
+  StartPosition: {x: 0, y: 0, z: -5}
+  StartRotation: {x: 0, y: -45, z: 0}

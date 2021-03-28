@@ -1,4 +1,5 @@
-﻿using Entitas.Unity;
+﻿using System;
+using Entitas.Unity;
 using UnityEngine;
 
 namespace BoxLoader
@@ -42,6 +43,17 @@ namespace BoxLoader
 			transform.rotation = rotation;
 		}
 
+		//TODO
+		public T GetUniqueComponent<T>()
+		{
+			var component = gameObject.GetComponent<T>();
+
+			if (component == null)
+				throw new NullReferenceException("Component type of " + nameof(T) + " not found");
+
+			return component;
+		}
+		
 		public void DestroyView()
 		{
 			Destroy(gameObject);

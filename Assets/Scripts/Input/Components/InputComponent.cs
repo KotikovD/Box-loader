@@ -3,10 +3,9 @@ using Entitas.CodeGeneration.Attributes;
 
 namespace BoxLoader
 {
-	[Game]
+	[Input]
 	[Unique]
-	[Event(EventTarget.Any)]
-	public sealed class PlayerComponent : IComponent
+	public sealed class InputComponent : IComponent
 	{
 	}
 }

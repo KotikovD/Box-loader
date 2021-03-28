@@ -14,7 +14,7 @@ namespace BoxLoader
 
 		public void Initialize()
 		{
-			var playerData = _contexts.game.dataService.value.Player;
+			var playerData = _contexts.game.dataService.value.PlayerData;
 			var playerEntity = _contexts.game.CreateEntity();
 			
 			playerEntity.AddSpeed(playerData.Speed);
