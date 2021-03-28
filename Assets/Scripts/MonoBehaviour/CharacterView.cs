@@ -47,7 +47,7 @@ namespace BoxLoader
 
 		public void Move(Vector3 destinationPoint)
 		{
-			_navMeshAgent.Move(destinationPoint);
+			_navMeshAgent.SetDestination(destinationPoint);
 		}
 
 		public void Use(Vector3 destinationPoint)

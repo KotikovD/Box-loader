@@ -6,18 +6,19 @@ namespace BoxLoader
 		{
 
 			// Init
-			
-			
 			Add(new InitializeDataSystem(contexts));
 			Add(new InitializeSceneSystem(contexts));
 			Add(new InitializeCharacterViewSystem(contexts));
 			Add(new InitializeObjectsViewSystem(contexts));
-
+			
+			Add(new GameEventSystems(contexts));
+			Add(new InputEventSystems(contexts));
+			
 			Add(new InitializePlayerInputSystem(contexts));
 			Add(new InitializePlayerSystem(contexts));
 			Add(new InitializeCameraSystem(contexts));
-			Add(new GameEventSystems(contexts));
 			Add(new CameraMoveEventSystem(contexts));
+			Add(new ProcessInputReactiveSystem(contexts));
 			
 			
 			// Add(new InitializeNpcSystem(contexts));

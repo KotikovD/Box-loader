@@ -11,18 +11,21 @@ public static class InputComponentsLookup {
     public const int Input = 0;
     public const int Target = 1;
     public const int Use = 2;
+    public const int TargetListener = 3;
 
-    public const int TotalComponents = 3;
+    public const int TotalComponents = 4;
 
     public static readonly string[] componentNames = {
         "Input",
         "Target",
-        "Use"
+        "Use",
+        "TargetListener"
     };
 
     public static readonly System.Type[] componentTypes = {
         typeof(BoxLoader.InputComponent),
         typeof(BoxLoader.TargetComponent),
-        typeof(BoxLoader.UseComponent)
+        typeof(BoxLoader.UseComponent),
+        typeof(TargetListenerComponent)
     };
 }
