@@ -2,11 +2,11 @@
 
 namespace BoxLoader
 {
-	public class InitializeObjectsViewSystem : IInitializeSystem
+	public class InitializeObjectsViewServiceSystem : IInitializeSystem
 	{
 		private readonly GameContext _context;
 
-		public InitializeObjectsViewSystem(Contexts context)
+		public InitializeObjectsViewServiceSystem(Contexts context)
 		{
 			_context = context.game;
 		}

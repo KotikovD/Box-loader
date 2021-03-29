@@ -11,16 +11,16 @@ public static class GameComponentsLookup {
     public const int AnyPlayerListener = 0;
     public const int Asset = 1;
     public const int Camera = 2;
-    public const int CharacterView = 3;
+    public const int Character = 3;
     public const int ObjectsView = 4;
     public const int Player = 5;
     public const int Position = 6;
     public const int Rotation = 7;
     public const int Speed = 8;
-    public const int DataService = 9;
-    public const int PositionListener = 10;
-    public const int SceneService = 11;
-    public const int ViewCharacterService = 12;
+    public const int CharacterService = 9;
+    public const int DataService = 10;
+    public const int PositionListener = 11;
+    public const int SceneService = 12;
     public const int ViewObjectsService = 13;
 
     public const int TotalComponents = 14;
@@ -29,16 +29,16 @@ public static class GameComponentsLookup {
         "AnyPlayerListener",
         "Asset",
         "Camera",
-        "CharacterView",
+        "Character",
         "ObjectsView",
         "Player",
         "Position",
         "Rotation",
         "Speed",
+        "CharacterService",
         "DataService",
         "PositionListener",
         "SceneService",
-        "ViewCharacterService",
         "ViewObjectsService"
     };
 
@@ -46,16 +46,16 @@ public static class GameComponentsLookup {
         typeof(AnyPlayerListenerComponent),
         typeof(BoxLoader.AssetComponent),
         typeof(BoxLoader.CameraComponent),
-        typeof(BoxLoader.CharacterViewComponent),
+        typeof(BoxLoader.CharacterComponent),
         typeof(BoxLoader.ObjectsViewComponent),
         typeof(BoxLoader.PlayerComponent),
         typeof(BoxLoader.PositionComponent),
         typeof(BoxLoader.RotationComponent),
         typeof(BoxLoader.SpeedComponent),
+        typeof(CharacterServiceComponent),
         typeof(DataServiceComponent),
         typeof(PositionListenerComponent),
         typeof(SceneServiceComponent),
-        typeof(ViewCharacterServiceComponent),
         typeof(ViewObjectsServiceComponent)
     };
 }

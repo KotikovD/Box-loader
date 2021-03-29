@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace BoxLoader
 {
-	public class InitializePlayerSystem : IInitializeSystem
+	public class InitializePlayerEntitySystem : IInitializeSystem
 	{
 		private Contexts _contexts;
 
-		public InitializePlayerSystem(Contexts contexts)
+		public InitializePlayerEntitySystem(Contexts contexts)
 		{
 			_contexts = contexts;
 		}

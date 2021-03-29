@@ -9,4 +9,5 @@ namespace BoxLoader
 	public sealed class PlayerComponent : IComponent
 	{
 	}
+
 }

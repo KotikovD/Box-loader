@@ -7,6 +7,9 @@ namespace BoxLoader
 	public class InitializePlayerInputSystem : IInitializeSystem, ITearDownSystem
 	{
 		private readonly Contexts _contexts;
+		private readonly int _layerMask;
+		private const float RayDistance = 100f;
+		
 		private InputEntity _inputEntity;
 		private InputMaster _input;
 		private Camera _camera;
@@ -14,6 +17,7 @@ namespace BoxLoader
 		public InitializePlayerInputSystem(Contexts contexts)
 		{
 			_contexts = contexts;
+			_layerMask = LayerMask.NameToLayer(LayerNamesKeeper.Character);
 		}
 
 		public void Initialize()
@@ -32,7 +36,8 @@ namespace BoxLoader
 		private void Move(bool isUse)
 		{
 			var ray = _camera.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(ray, out var hit))
+			
+			if (Physics.Raycast(ray, out var hit, RayDistance, ~_layerMask))
 			{
 				_inputEntity.ReplaceTarget(hit.point);
 				_inputEntity.isUse = isUse;

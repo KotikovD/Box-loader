@@ -5,48 +5,32 @@ namespace BoxLoader
 		public GameSystems(Contexts contexts)
 		{
 
-			// Init
-			Add(new InitializeDataSystem(contexts));
-			Add(new InitializeSceneSystem(contexts));
-			Add(new InitializeCharacterViewSystem(contexts));
-			Add(new InitializeObjectsViewSystem(contexts));
-			
+			// Event
 			Add(new GameEventSystems(contexts));
 			Add(new InputEventSystems(contexts));
 			
+			// Init
+			Add(new InitializeDataSystem(contexts));
+			Add(new InitializeSceneSystem(contexts));
+			Add(new InitializeCharacterServiceSystem(contexts));
+			Add(new InitializeObjectsViewServiceSystem(contexts));
+			Add(new InitializePlayerEntitySystem(contexts));
+			Add(new InitializeCameraEntitySystem(contexts));
+
+			// Input
 			Add(new InitializePlayerInputSystem(contexts));
-			Add(new InitializePlayerSystem(contexts));
-			Add(new InitializeCameraSystem(contexts));
-			
 			Add(new ProcessInputReactiveSystem(contexts));
-			Add(new VisualSynchronizerExecuteSystem(contexts));
+			
+			// Update
+			Add(new InitializeObjectsViewReactiveSystem(contexts));
+			Add(new InitializeCharactersReactiveSystem(contexts));
 			Add(new CameraMoveEventSystem(contexts));
-			
-			// Add(new InitializeNpcSystem(contexts));
-			// Add(new InitializeLevelSystem(contexts));
-			// Add(new MeshColorReactiveSystem(contexts));
-			// Add(new GameEventSystems(contexts));
-			//
-			//
-			// // Input
-			 
-			// Add(new ApplyPlayerUnitMovementSystem(contexts));
+			Add(new VisualSynchronizerExecuteSystem(contexts));
+
+			// View
 			
 			
-			// // Update
-			// Add(new HealthReactiveSystem(contexts));
-			// Add(new VisualSynchronizerExecuteSystem(contexts));
-			// Add(new RotationMoveReactiveSystem(contexts));
-			// Add(new ApplyDamageReactiveSystem(contexts));
-			// Add(new SetCameraParentReactiveSystem(contexts));
-			// //Add(new CameraMoveSystem(contexts));
-			//
-			// // View
-			Add(new CreatePalyerViewByAssetReactiveSystem(contexts));
-			
-			//
-			//
-			// //Cleanup
+			// Cleanup
 			// Add(new DestroyEntitySystem(contexts));
 
 		}

@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Entitas;
 
+
 namespace BoxLoader
 {
-	public class CreatePalyerViewByAssetReactiveSystem : ReactiveSystem<GameEntity>, ITearDownSystem
+	public class InitializeObjectsViewReactiveSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 	{
 		private readonly GameContext _context;
 
-		public CreatePalyerViewByAssetReactiveSystem(Contexts contexts) : base(contexts.game)
+		public InitializeObjectsViewReactiveSystem(Contexts contexts) : base(contexts.game)
 		{
 			_context = contexts.game;
 		}
@@ -27,15 +28,15 @@ namespace BoxLoader
 		{
 			foreach (var entity in entities)
 			{
-				_context.viewCharacterService.value.DestroyView(entity);
-				_context.viewCharacterService.value.CreateView(_context, entity);
+				_context.viewObjectsService.value.DestroyView(entity);
+				_context.viewObjectsService.value.CreateView(_context, entity);
 			}
 		}
 
 		public void TearDown()
 		{
-			foreach (var entity in _context.GetEntities().Where(a => a.hasCharacterView))
-				_context.viewCharacterService.value.DestroyView(entity);
+			foreach (var entity in _context.GetEntities().Where(a => a.hasObjectsView))
+				_context.viewObjectsService.value.DestroyView(entity);
 		}
 
 	}

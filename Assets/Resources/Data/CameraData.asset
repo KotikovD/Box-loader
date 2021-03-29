@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b32e6583c3cad478fc11447623847f, type: 3}
   m_Name: CameraData
   m_EditorClassIdentifier: 
-  LerpSpeed: 0.4
+  LerpSpeed: 0.03
   OffsetByPlayer: {x: 10, y: 22, z: -10}
   StartRotation: {x: 55, y: -45, z: 0}

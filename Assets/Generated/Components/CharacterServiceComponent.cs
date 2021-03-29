@@ -7,6 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 [Entitas.CodeGeneration.Attributes.DontGenerate(false)]
-public sealed class ViewCharacterServiceComponent : Entitas.IComponent {
-    public BoxLoader.IViewCharacterService value;
+public sealed class CharacterServiceComponent : Entitas.IComponent {
+    public BoxLoader.ICharacterService value;
 }

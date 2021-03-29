@@ -20,7 +20,7 @@ namespace BoxLoader
 
 		public void DestroyView(GameEntity entity)
 		{
-			if (!entity.hasCharacterView) return;
+			if (!entity.hasCharacter) return;
 	
 			entity.objectsView.Value.DestroyView();
 			entity.RemoveObjectsView();
