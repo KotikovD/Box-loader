@@ -18,7 +18,6 @@ namespace BoxLoader
 		public void Initialize()
 		{
 			
-			
 			var cameraData = _contexts.game.dataService.value.CameraData;
 			var playerPosition = _contexts.game.dataService.value.PlayerData.StartPosition;
 			var cameraPosition = Utils.CalculateOffsetPosition(playerPosition, cameraData.OffsetByPlayer);

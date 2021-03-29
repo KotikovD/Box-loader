@@ -9,7 +9,7 @@ public interface IObjectsView
 	void InitializeView(GameEntity entity);
 	void SetActive(bool isActive);
 	void SetParent(Transform parent, bool worldPositionStays = true);
-	void SetPosition(Vector3 position, bool isTween = false);
+	void SetPosition(Vector3 position);
 	void SetRotation(Quaternion rotation);
 	void DestroyView();
 }

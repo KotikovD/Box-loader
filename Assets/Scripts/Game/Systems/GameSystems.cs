@@ -17,9 +17,10 @@ namespace BoxLoader
 			Add(new InitializePlayerInputSystem(contexts));
 			Add(new InitializePlayerSystem(contexts));
 			Add(new InitializeCameraSystem(contexts));
-			Add(new CameraMoveEventSystem(contexts));
-			Add(new ProcessInputReactiveSystem(contexts));
 			
+			Add(new ProcessInputReactiveSystem(contexts));
+			Add(new VisualSynchronizerExecuteSystem(contexts));
+			Add(new CameraMoveEventSystem(contexts));
 			
 			// Add(new InitializeNpcSystem(contexts));
 			// Add(new InitializeLevelSystem(contexts));
@@ -34,7 +35,7 @@ namespace BoxLoader
 			
 			// // Update
 			// Add(new HealthReactiveSystem(contexts));
-			// Add(new PositionMoveReactiveSystem(contexts));
+			// Add(new VisualSynchronizerExecuteSystem(contexts));
 			// Add(new RotationMoveReactiveSystem(contexts));
 			// Add(new ApplyDamageReactiveSystem(contexts));
 			// Add(new SetCameraParentReactiveSystem(contexts));

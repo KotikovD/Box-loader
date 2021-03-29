@@ -22,5 +22,6 @@ namespace BoxLoader
 		{
 			_contexts.game.playerEntity.characterView.Value.Move(value);
 		}
+		
 	}
 }

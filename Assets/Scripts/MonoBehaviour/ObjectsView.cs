@@ -33,7 +33,7 @@ namespace BoxLoader
 			transform.SetParent(parent, worldPositionStays);
 		}
 
-		public void SetPosition(Vector3 position, bool isTween = false)
+		public void SetPosition(Vector3 position)
 		{
 			transform.localPosition = position;
 		}

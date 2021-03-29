@@ -1,16 +1,14 @@
-﻿using DG.Tweening;
-using Entitas;
+﻿using Entitas;
 using UnityEngine;
+
 
 namespace BoxLoader
 {
-	public class CameraMoveEventSystem : IInitializeSystem, IAnyPlayerListener, IPositionListener
+	public class CameraMoveEventSystem : IInitializeSystem, IPositionListener
 	{
 		private Contexts _contexts;
-		private GameEntity _cachePlayer;
-		private CameraData _cameraDataData;
-		private Sequence _animationTween;
-		private GameEntity _cacheCamera;
+		private CameraData _cameraData;
+		private GameEntity _camera;
 		
 		public CameraMoveEventSystem(Contexts contexts)
 		{
@@ -18,46 +16,18 @@ namespace BoxLoader
 		}
 		public void Initialize()
 		{
-			_cachePlayer = _contexts.game.playerEntity;
-			_cameraDataData = _contexts.game.dataService.value.CameraData;
-			_cacheCamera = _contexts.game.cameraEntity;
+			_cameraData = _contexts.game.dataService.value.CameraData;
+			_camera = _contexts.game.cameraEntity;
 			
-			_cachePlayer.AddPositionListener(this);
-			_cachePlayer.AddAnyPlayerListener(this);
-		}
-		
-		//TODO self action
-		public void OnAnyPlayer(GameEntity entity)
-		{
-			if (_cachePlayer.creationIndex != entity.creationIndex)
-			{
-				_cachePlayer.RemovePositionListener();
-				entity.AddPositionListener(this);
-				_cachePlayer = entity;
-				MoveCamera(entity);
-			}
+			_contexts.game.playerEntity.AddPositionListener(this);
 		}
 
 		public void OnPosition(GameEntity entity, Vector3 value)
 		{
-			MoveCamera(entity);
+			var newPosition = Utils.CalculateOffsetPosition(value, _cameraData.OffsetByPlayer);
+			var lerpPosition = Vector3.Lerp(_camera.position.value, newPosition,_cameraData.LerpSpeed);
+			_camera.objectsView.Value.SetPosition(lerpPosition);
 		}
-	 
-		private void MoveCamera(GameEntity entity)
-		{
-			//TODO move to visual?
-			var endPosition = new []{Utils.CalculateOffsetPosition(entity.position.value, _cameraDataData.OffsetByPlayer)};
-			var duration = new []{_cameraDataData.LerpSpeed};
-		
-			_animationTween?.Kill();
-			var tween = DOTween.Sequence();
-			tween.Append(DOTween.ToArray(() => _cacheCamera.position.value, _cacheCamera.ReplacePosition, endPosition,
-				duration).SetEase(Ease.Linear));
-			_animationTween = tween;
-		}
-	
-
-
 		
 	}
 }
