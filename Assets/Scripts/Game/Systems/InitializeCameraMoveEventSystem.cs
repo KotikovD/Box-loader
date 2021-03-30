@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace BoxLoader
 {
-	public class CameraMoveEventSystem : IInitializeSystem, IPositionListener
+	public class InitializeCameraMoveEventSystem : IInitializeSystem, IPositionListener
 	{
 		private Contexts _contexts;
 		private CameraData _cameraData;
 		private GameEntity _camera;
 		
-		public CameraMoveEventSystem(Contexts contexts)
+		public InitializeCameraMoveEventSystem(Contexts contexts)
 		{
 			_contexts = contexts;
 		}

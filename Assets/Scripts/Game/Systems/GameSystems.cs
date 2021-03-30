@@ -16,15 +16,15 @@ namespace BoxLoader
 			Add(new InitializeObjectsViewServiceSystem(contexts));
 			Add(new InitializePlayerEntitySystem(contexts));
 			Add(new InitializeCameraEntitySystem(contexts));
-
-			// Input
 			Add(new InitializePlayerInputSystem(contexts));
+			
+			// Input
 			Add(new ProcessInputReactiveSystem(contexts));
 			
 			// Update
-			Add(new InitializeObjectsViewReactiveSystem(contexts));
-			Add(new InitializeCharactersReactiveSystem(contexts));
-			Add(new CameraMoveEventSystem(contexts));
+			Add(new ObjectsViewReactiveSystem(contexts));
+			Add(new CharactersReactiveSystem(contexts));
+			Add(new InitializeCameraMoveEventSystem(contexts));
 			Add(new VisualSynchronizerExecuteSystem(contexts));
 
 			// View

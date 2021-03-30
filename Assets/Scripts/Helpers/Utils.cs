@@ -2,6 +2,7 @@
 
 namespace BoxLoader
 {
+	//TODO what should i do with this class? 
 	public static class Utils
 	{
 		/// <summary>

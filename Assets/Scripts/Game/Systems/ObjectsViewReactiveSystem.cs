@@ -5,11 +5,11 @@ using Entitas;
 
 namespace BoxLoader
 {
-	public class InitializeObjectsViewReactiveSystem : ReactiveSystem<GameEntity>, ITearDownSystem
+	public class ObjectsViewReactiveSystem : ReactiveSystem<GameEntity>, ITearDownSystem
 	{
 		private readonly GameContext _context;
 
-		public InitializeObjectsViewReactiveSystem(Contexts contexts) : base(contexts.game)
+		public ObjectsViewReactiveSystem(Contexts contexts) : base(contexts.game)
 		{
 			_context = contexts.game;
 		}
