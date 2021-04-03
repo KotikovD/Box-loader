@@ -1,4 +1,3 @@
-
 namespace BoxLoader
 {
 	public class DataService : IDataService

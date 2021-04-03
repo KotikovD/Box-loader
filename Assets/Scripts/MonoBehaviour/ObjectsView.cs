@@ -13,7 +13,8 @@ namespace BoxLoader
 		public GameObject GameObject => gameObject;
 		public Vector3 GetPosition => transform.localPosition;
 		public Quaternion GetRotation => transform.localRotation;
-		
+		public string AssetName => gameObject.name;
+
 
 		public void InitializeView(GameEntity entity)
 		{

@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace BoxLoader
 {
-	public sealed class ProcessInputReactiveSystem : IInitializeSystem, ITargetListener
+	public sealed class InitializeProcessInputSystem : IInitializeSystem, ITargetListener
 	{
 		readonly Contexts _contexts;
 		private GameEntity _playerEntity;
 		
-		public ProcessInputReactiveSystem(Contexts contexts)
+		public InitializeProcessInputSystem(Contexts contexts)
 		{
 			_contexts = contexts;
 		}

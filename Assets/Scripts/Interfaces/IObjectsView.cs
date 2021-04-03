@@ -1,11 +1,9 @@
 using UnityEngine;
 
-public interface IObjectsView
+public interface IObjectsView : IView
 {
 	Transform Transform { get; }
 	GameObject GameObject { get; }
-	Vector3 GetPosition { get; }
-	Quaternion GetRotation { get; }
 	void InitializeView(GameEntity entity);
 	void SetActive(bool isActive);
 	void SetParent(Transform parent, bool worldPositionStays = true);

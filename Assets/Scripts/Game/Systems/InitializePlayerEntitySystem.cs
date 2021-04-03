@@ -19,8 +19,8 @@ namespace BoxLoader
 			
 			playerEntity.AddSpeed(playerData.Speed);
 			playerEntity.AddAsset(playerData.AssetName);
-			playerEntity.AddPosition(playerData.StartPosition);
-			playerEntity.AddRotation(Quaternion.Euler(playerData.StartRotation));
+			playerEntity.AddPosition(playerData.GetPosition);
+			playerEntity.AddRotation(playerData.GetRotation);
 			playerEntity.isPlayer = true;
 		}
 

@@ -4,30 +4,28 @@ namespace BoxLoader
 	{
 		public GameSystems(Contexts contexts)
 		{
-
-			// Event
+			//TODO implement Teardown methods for all sys
+			
+			// Init - Global systems
 			Add(new GameEventSystems(contexts));
 			Add(new InputEventSystems(contexts));
-			
-			// Init
 			Add(new InitializeDataSystem(contexts));
-			Add(new InitializeSceneSystem(contexts));
 			Add(new InitializeCharacterServiceSystem(contexts));
 			Add(new InitializeObjectsViewServiceSystem(contexts));
-			Add(new InitializePlayerEntitySystem(contexts));
-			Add(new InitializeCameraEntitySystem(contexts));
-			Add(new InitializePlayerInputSystem(contexts));
-			
-			// Input
-			Add(new ProcessInputReactiveSystem(contexts));
-			
-			// Update
-			Add(new ObjectsViewReactiveSystem(contexts));
 			Add(new CharactersReactiveSystem(contexts));
-			Add(new InitializeCameraMoveEventSystem(contexts));
+			Add(new ObjectsViewReactiveSystem(contexts));
+			
+			
+			// Init - Usual systems
+			Add(new InitializePlayerEntitySystem(contexts));
+			Add(new InitializePlayerInputReactiveSystem(contexts));	
+			Add(new InitializeCameraEntitySystem(contexts));
+			Add(new InitializeCameraMoveReactiveEventSystem(contexts));
+			Add(new InitializeProcessInputSystem(contexts));
+			
+			
+			// Execute
 			Add(new VisualSynchronizerExecuteSystem(contexts));
-
-			// View
 			
 			
 			// Cleanup

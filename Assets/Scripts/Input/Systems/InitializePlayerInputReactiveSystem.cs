@@ -1,10 +1,11 @@
-﻿using Entitas;
+﻿using System.Collections.Generic;
+using Entitas;
 using UnityEngine;
 
 
 namespace BoxLoader
 {
-	public class InitializePlayerInputSystem : IInitializeSystem, ITearDownSystem
+	public class InitializePlayerInputReactiveSystem : ReactiveSystem<GameEntity>, IInitializeSystem, ITearDownSystem
 	{
 		private readonly Contexts _contexts;
 		private readonly int _layerMask;
@@ -14,23 +15,37 @@ namespace BoxLoader
 		private InputMaster _input;
 		private Camera _camera;
 
-		public InitializePlayerInputSystem(Contexts contexts)
+		public InitializePlayerInputReactiveSystem(Contexts contexts) : base(contexts.game)
 		{
 			_contexts = contexts;
 			_layerMask = LayerMask.NameToLayer(LayerNamesKeeper.Character);
+			
 		}
-
+		
 		public void Initialize()
 		{
-			_camera = _contexts.game.sceneService.value.Camera;
-			
 			_inputEntity = _contexts.input.CreateEntity();
 			_inputEntity.isInput = true;
-			
+
 			_input = new InputMaster();
 			_input.Player.Move.performed += context => Move(false);
 			_input.Player.Use.performed += context => Move(true);
 			_input.Enable();
+		}
+		
+		protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+		{
+			return context.CreateCollector(GameMatcher.Camera.Added());
+		}
+
+		protected override bool Filter(GameEntity entity)
+		{
+			return entity.hasObjectsView;
+		}
+
+		protected override void Execute(List<GameEntity> entities)
+		{
+			_camera = _contexts.game.cameraEntity.objectsView.Value.GameObject.GetComponent<Camera>();
 		}
 		
 		private void Move(bool isUse)
@@ -49,5 +64,6 @@ namespace BoxLoader
 		{
 			_input.Disable();
 		}
+		
 	}
 }

@@ -14,6 +14,7 @@ namespace BoxLoader
 		{
 			var prefab = _prefabLoader.GetPrefab(entity.asset.Value);
 			var obj = Object.Instantiate(prefab);
+			obj.name = entity.asset.Value;
 			var view = obj.GetComponent<ObjectsView>();
 			view.InitializeView(entity);
 		}

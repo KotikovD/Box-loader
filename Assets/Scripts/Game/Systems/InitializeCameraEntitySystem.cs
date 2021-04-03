@@ -18,17 +18,14 @@ namespace BoxLoader
 		public void Initialize()
 		{
 			var cameraData = _contexts.game.dataService.value.CameraData;
-			var playerPosition = _contexts.game.dataService.value.PlayerData.StartPosition;
-			var cameraPosition = Utils.CalculateOffsetPosition(playerPosition, cameraData.OffsetByPlayer);
+			var playerPosition = _contexts.game.dataService.value.PlayerData.GetPosition;
+			var cameraPosition = Utils.CalculateOffsetPosition(playerPosition, cameraData.GetPosition);
 
 			_cameraEntity = _contexts.game.CreateEntity();
+			_cameraEntity.AddAsset(cameraData.AssetName);
 			_cameraEntity.AddPosition(cameraPosition);
-			_cameraEntity.AddRotation(Quaternion.Euler(cameraData.StartRotation));
+			_cameraEntity.AddRotation(cameraData.GetRotation);
 			_cameraEntity.isCamera = true;
-			
-			var camera = _contexts.game.sceneService.value.Camera;
-			var view = camera.GetComponent<ObjectsView>();
-			view.InitializeView(_cameraEntity);
 		}
 	}
 }

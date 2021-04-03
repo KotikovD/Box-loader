@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df0aedf991c42a6ae315b9d9992a026, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  Speed: 1
-  AssetName: Character
-  StartPosition: {x: 0, y: 0, z: -5}
-  StartRotation: {x: 0, y: -45, z: 0}
+  _assetName: Character
+  _startPosition: {x: 1, y: 0, z: -5}
+  _startRotation: {x: 0, y: -45, z: 0}
+  _speed: 1
