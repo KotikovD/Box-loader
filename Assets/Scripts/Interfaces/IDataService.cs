@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Entitas.CodeGeneration.Attributes;
 
 
@@ -6,4 +7,5 @@ public interface IDataService
 {
 	CameraData CameraData { get; }
 	public PlayerData PlayerData { get; }
+	List<ConveyorData> ConveyorData { get; }
 }

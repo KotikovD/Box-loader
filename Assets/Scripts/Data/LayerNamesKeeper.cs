@@ -2,6 +2,6 @@
 {
 	public static class LayerNamesKeeper
 	{
-		public const string Character = "Character";
+		public static readonly string Character = "Character";
 	}
 }

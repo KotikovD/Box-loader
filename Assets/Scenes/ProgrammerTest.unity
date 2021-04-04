@@ -1671,7 +1671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &198681613
 Transform:
   m_ObjectHideFlags: 0
@@ -3959,7 +3959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &516580639
 Transform:
   m_ObjectHideFlags: 0
@@ -5455,6 +5455,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b02ad5b015cb18429e933db4c001e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneParentsNamesData: {fileID: 11400000, guid: 3f1ec91b0ab482b4e9811a12bc734fc2,
+    type: 2}
+  _pathKeeper: {fileID: 11400000, guid: cb9babf5039e7534cadd367c22270bc3, type: 2}
 --- !u!4 &718239428
 Transform:
   m_ObjectHideFlags: 0
@@ -12587,7 +12590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1746410867
 Transform:
   m_ObjectHideFlags: 0
@@ -16739,12 +16742,12 @@ GameObject:
   - component: {fileID: 1298752597588633177}
   - component: {fileID: 1302354020042998452}
   m_Layer: 0
-  m_Name: Conveyor_submitter
+  m_Name: Conveyor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!208 &1302354020042998452
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -17884,7 +17887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!208 &5206227301034992762
 NavMeshObstacle:
   m_ObjectHideFlags: 0

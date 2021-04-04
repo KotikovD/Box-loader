@@ -12,23 +12,26 @@ public static class GameComponentsLookup {
     public const int Asset = 1;
     public const int Camera = 2;
     public const int Character = 3;
-    public const int ObjectsView = 4;
-    public const int Player = 5;
-    public const int Position = 6;
-    public const int Rotation = 7;
-    public const int Speed = 8;
-    public const int CharacterService = 9;
-    public const int DataService = 10;
-    public const int PositionListener = 11;
-    public const int ViewObjectsService = 12;
+    public const int ConveyorData = 4;
+    public const int ObjectsView = 5;
+    public const int Player = 6;
+    public const int Position = 7;
+    public const int Rotation = 8;
+    public const int Speed = 9;
+    public const int CharacterService = 10;
+    public const int DataService = 11;
+    public const int PositionListener = 12;
+    public const int SceneService = 13;
+    public const int ViewObjectsService = 14;
 
-    public const int TotalComponents = 13;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
         "AnyPlayerListener",
         "Asset",
         "Camera",
         "Character",
+        "ConveyorData",
         "ObjectsView",
         "Player",
         "Position",
@@ -37,6 +40,7 @@ public static class GameComponentsLookup {
         "CharacterService",
         "DataService",
         "PositionListener",
+        "SceneService",
         "ViewObjectsService"
     };
 
@@ -45,6 +49,7 @@ public static class GameComponentsLookup {
         typeof(BoxLoader.AssetComponent),
         typeof(BoxLoader.CameraComponent),
         typeof(BoxLoader.CharacterComponent),
+        typeof(BoxLoader.ConveyorDataComponent),
         typeof(BoxLoader.ObjectsViewComponent),
         typeof(BoxLoader.PlayerComponent),
         typeof(BoxLoader.PositionComponent),
@@ -53,6 +58,7 @@ public static class GameComponentsLookup {
         typeof(CharacterServiceComponent),
         typeof(DataServiceComponent),
         typeof(PositionListenerComponent),
+        typeof(SceneServiceComponent),
         typeof(ViewObjectsServiceComponent)
     };
 }
