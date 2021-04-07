@@ -15,7 +15,7 @@ namespace BoxLoader
 		{
 			_contexts = new Contexts();
 			_mainOptions = new MainOptions(
-				new SceneParentsNamesKeeper(_sceneParentsNamesData),
+				new SceneGameObjectsHierarchy(_sceneParentsNamesData),
 				_pathKeeper
 			);
 			

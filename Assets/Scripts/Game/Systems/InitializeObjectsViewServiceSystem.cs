@@ -5,17 +5,18 @@ namespace BoxLoader
 	public class InitializeObjectsViewServiceSystem : IInitializeSystem
 	{
 		private readonly GameContext _context;
-		private IPathKeeperData _pathData;
+		private MainOptions _mainOptions;
 
-		public InitializeObjectsViewServiceSystem(Contexts context, IPathKeeperData pathData)
+		public InitializeObjectsViewServiceSystem(Contexts context, MainOptions mainOptions)
 		{
-			_pathData = pathData;
+			_mainOptions = mainOptions;
 			_context = context.game;
 		}
 
 		public void Initialize()
 		{
-			_context.SetViewObjectsService(new ViewObjectsService(new PrefabLoader(_pathData)));
+			_context.SetViewObjectsService(new ViewObjectsService(new PrefabLoader(_mainOptions.PathKeeper),
+				_mainOptions.SceneGameObjectsHierarchy));
 		}
 	}
 }

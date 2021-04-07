@@ -15,4 +15,5 @@ MonoBehaviour:
   _assetName: Conveyor
   _startPosition: {x: 4, y: 0, z: 0}
   _startRotation: {x: 0, y: 0, z: 0}
+  _sceneTagName: 4
   _conveyorMode: 0

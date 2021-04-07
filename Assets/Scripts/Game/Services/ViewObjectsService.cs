@@ -5,18 +5,22 @@ namespace BoxLoader
 	public class ViewObjectsService : IViewObjectsService
 	{
 		private readonly IPrefabLoader _prefabLoader;
-		public ViewObjectsService(PrefabLoader prefabLoader)
+		private ISceneGameObjectsHierarchy _sceneGameObjectsHierarchy;
+
+		public ViewObjectsService(PrefabLoader prefabLoader, ISceneGameObjectsHierarchy sceneGameObjectsHierarchy)
 		{
+			_sceneGameObjectsHierarchy = sceneGameObjectsHierarchy;
 			_prefabLoader = prefabLoader;
 		}
 		
 		public void CreateView(GameContext context, GameEntity entity)
 		{
-			var prefab = _prefabLoader.GetPrefab(entity.asset.Value);
+			var prefab = _prefabLoader.GetPrefab(entity.asset.Asset);
 			var obj = Object.Instantiate(prefab);
-			obj.name = entity.asset.Value;
+			obj.name = entity.asset.Asset;
 			var view = obj.GetComponent<ObjectsView>();
-			view.InitializeView(entity);
+			var parent = _sceneGameObjectsHierarchy.GetParent(entity.asset.ParentTag);
+			view.InitializeView(entity, parent);
 		}
 
 		public void DestroyView(GameEntity entity)

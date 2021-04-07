@@ -15,4 +15,5 @@ MonoBehaviour:
   _assetName: Character
   _startPosition: {x: 1, y: 0, z: -5}
   _startRotation: {x: 0, y: -45, z: 0}
+  _sceneTagName: 2
   _speed: 1

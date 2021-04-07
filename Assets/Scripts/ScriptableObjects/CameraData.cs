@@ -1,3 +1,4 @@
+using BoxLoader;
 using UnityEngine;
 
 
@@ -8,6 +9,7 @@ public sealed class CameraData : ScriptableObjectExt
 	[SerializeField] private string _assetName;
 	[SerializeField] private Vector3 _offsetByPlayer;
 	[SerializeField] private Vector3 _startRotation;
+	[SerializeField] private SceneTagNames _sceneTagName;
 	[Header("Camera")]
 	[SerializeField] private float _lerpSpeed;
 	
@@ -15,4 +17,5 @@ public sealed class CameraData : ScriptableObjectExt
 	public override Vector3 GetPosition => _offsetByPlayer;
 	public override Quaternion GetRotation => Quaternion.Euler(_startRotation);
 	public override string AssetName => _assetName;
+	public override SceneTagNames SceneTagName => _sceneTagName;
 }

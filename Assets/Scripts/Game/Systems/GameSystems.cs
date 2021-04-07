@@ -10,10 +10,9 @@ namespace BoxLoader
 			// Init - Global
 			Add(new GameEventSystems(contexts));
 			Add(new InputEventSystems(contexts));
-			Add(new InitializeSceneServiceServiceSystem(contexts, mainOptions.SceneParentsNamesKeeper));
 			Add(new InitializeDataServiceSystem(contexts, mainOptions.PathKeeper));
 			Add(new InitializeCharacterServiceSystem(contexts, mainOptions.PathKeeper));
-			Add(new InitializeObjectsViewServiceSystem(contexts, mainOptions.PathKeeper));
+			Add(new InitializeObjectsViewServiceSystem(contexts, mainOptions));
 			
 			// Init - Reactive
 			Add(new CharactersReactiveSystem(contexts));
@@ -21,6 +20,7 @@ namespace BoxLoader
 			
 			
 			// Init - Usual
+			Add(new InitializeSimpleObjectsEntitiesSystem(contexts));
 			Add(new InitializePlayerEntitySystem(contexts));
 			Add(new InitializePlayerInputReactiveSystem(contexts));	
 			Add(new InitializeConveyorEntitiesSystem(contexts));	

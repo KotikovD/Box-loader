@@ -4,6 +4,7 @@ namespace BoxLoader
 {
 	public sealed class AssetComponent : IComponent
 	{
-		public string Value;
+		public string Asset;
+		public SceneTagNames ParentTag;
 	}
 }

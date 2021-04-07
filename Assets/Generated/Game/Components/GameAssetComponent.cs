@@ -11,17 +11,19 @@ public partial class GameEntity {
     public BoxLoader.AssetComponent asset { get { return (BoxLoader.AssetComponent)GetComponent(GameComponentsLookup.Asset); } }
     public bool hasAsset { get { return HasComponent(GameComponentsLookup.Asset); } }
 
-    public void AddAsset(string newValue) {
+    public void AddAsset(string newAsset, BoxLoader.SceneTagNames newParentTag) {
         var index = GameComponentsLookup.Asset;
         var component = (BoxLoader.AssetComponent)CreateComponent(index, typeof(BoxLoader.AssetComponent));
-        component.Value = newValue;
+        component.Asset = newAsset;
+        component.ParentTag = newParentTag;
         AddComponent(index, component);
     }
 
-    public void ReplaceAsset(string newValue) {
+    public void ReplaceAsset(string newAsset, BoxLoader.SceneTagNames newParentTag) {
         var index = GameComponentsLookup.Asset;
         var component = (BoxLoader.AssetComponent)CreateComponent(index, typeof(BoxLoader.AssetComponent));
-        component.Value = newValue;
+        component.Asset = newAsset;
+        component.ParentTag = newParentTag;
         ReplaceComponent(index, component);
     }
 

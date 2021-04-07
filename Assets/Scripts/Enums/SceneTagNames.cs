@@ -5,6 +5,7 @@
 		No = 0,
 		Ui = 1,
 		Level = 2,
-		Light = 3
+		Light = 3,
+		Conveyor = 4
 	}
 }

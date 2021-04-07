@@ -23,7 +23,7 @@ namespace BoxLoader
 			var cameraPosition = CalculateOffset(playerPosition, _cameraData.GetPosition);
 
 			_camera = _contexts.game.CreateEntity();
-			_camera.AddAsset(_cameraData.AssetName);
+			_camera.AddAsset(_cameraData.AssetName, _cameraData.SceneTagName);
 			_camera.AddPosition(cameraPosition);
 			_camera.AddRotation(_cameraData.GetRotation);
 			_camera.isCamera = true;

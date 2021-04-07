@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BoxLoader
 {
-	[CreateAssetMenu(menuName = "MainOptions/SceneParentsNamesKeeper")]
+	[CreateAssetMenu(menuName = "MainOptions/SceneGameObjectsHierarchy")]
 	public sealed class SceneParentsNamesData : ScriptableObject, ISceneParentsNamesData
 	{
 		[SerializeField] private List<NameData> _names;
@@ -13,6 +13,7 @@ namespace BoxLoader
 
 		public Dictionary<SceneTagNames, string> Parents
 		{
+			//TODO move to generic utils
 			get
 			{
 				foreach (var nameData in _names)

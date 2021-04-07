@@ -4,7 +4,7 @@ namespace BoxLoader
 {
 	public class InitializeConveyorEntitiesSystem : IInitializeSystem
 	{
-		private GameContext _context;
+		private readonly GameContext _context;
 
 		public InitializeConveyorEntitiesSystem(Contexts contexts)
 		{
@@ -18,7 +18,7 @@ namespace BoxLoader
 			foreach (var conveyor in conveyorsData)
 			{
 				var conveyorEntity = _context.CreateEntity();
-				conveyorEntity.AddAsset(conveyor.AssetName);
+				conveyorEntity.AddAsset(conveyor.AssetName, conveyor.SceneTagName);
 				conveyorEntity.AddPosition(conveyor.GetPosition);
 				conveyorEntity.AddRotation(conveyor.GetRotation);
 				conveyorEntity.AddConveyorData(conveyor);

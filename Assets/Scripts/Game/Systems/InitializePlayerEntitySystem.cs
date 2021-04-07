@@ -18,7 +18,7 @@ namespace BoxLoader
 			var playerEntity = _contexts.game.CreateEntity();
 			
 			playerEntity.AddSpeed(playerData.Speed);
-			playerEntity.AddAsset(playerData.AssetName);
+			playerEntity.AddAsset(playerData.AssetName, playerData.SceneTagName);
 			playerEntity.AddPosition(playerData.GetPosition);
 			playerEntity.AddRotation(playerData.GetRotation);
 			playerEntity.isPlayer = true;

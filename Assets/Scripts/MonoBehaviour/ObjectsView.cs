@@ -14,14 +14,16 @@ namespace BoxLoader
 		public Vector3 GetPosition => transform.localPosition;
 		public Quaternion GetRotation => transform.localRotation;
 		public string AssetName => gameObject.name;
+		public SceneTagNames SceneTagName => EnumUtil.Parse<SceneTagNames>(gameObject.GetComponentInParent<GameObject>().name);
 
 
-		public void InitializeView(GameEntity entity)
+		public void InitializeView(GameEntity entity, Transform parentTransform)
 		{
 			entity.AddObjectsView(this);
 			_entityLink = gameObject.Link(entity);
 			SetPosition(entity.position.value);
 			SetRotation(entity.rotation.value);
+			SetParent(parentTransform);
 		}
 
 		public void SetActive(bool isActive)
@@ -44,17 +46,6 @@ namespace BoxLoader
 			transform.rotation = rotation;
 		}
 
-		//TODO
-		public T GetUniqueComponent<T>()
-		{
-			var component = gameObject.GetComponent<T>();
-
-			if (component == null)
-				throw new NullReferenceException("Component type of " + nameof(T) + " not found");
-
-			return component;
-		}
-		
 		public void DestroyView()
 		{
 			Destroy(gameObject);
