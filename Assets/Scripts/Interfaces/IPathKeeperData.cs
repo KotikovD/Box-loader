@@ -5,6 +5,6 @@
 		string DataFolder { get; }
 		string PrefabsFolder { get; }
 		string Camera { get; }
-		string Player { get; }
+		string Character { get; }
 	}
 }

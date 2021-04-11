@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9345426776442581b08f352e5ee423, type: 3}
   m_Name: LevelData
   m_EditorClassIdentifier: 
-  _assetName: 
+  _assetName: Room
   _position: {x: 0, y: 0, z: 0}
   _rotation: {x: 0, y: 0, z: 0}
-  _sceneTagName: 0
+  _sceneTagName: 2

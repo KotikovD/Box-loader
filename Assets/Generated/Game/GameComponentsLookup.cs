@@ -12,12 +12,12 @@ public static class GameComponentsLookup {
     public const int Asset = 1;
     public const int Camera = 2;
     public const int Character = 3;
-    public const int ConveyorData = 4;
-    public const int ObjectsView = 5;
-    public const int Player = 6;
-    public const int Position = 7;
-    public const int Rotation = 8;
-    public const int Speed = 9;
+    public const int CharacterData = 4;
+    public const int ConveyorData = 5;
+    public const int ObjectsView = 6;
+    public const int Player = 7;
+    public const int Position = 8;
+    public const int Rotation = 9;
     public const int CharacterService = 10;
     public const int DataService = 11;
     public const int PositionListener = 12;
@@ -30,12 +30,12 @@ public static class GameComponentsLookup {
         "Asset",
         "Camera",
         "Character",
+        "CharacterData",
         "ConveyorData",
         "ObjectsView",
         "Player",
         "Position",
         "Rotation",
-        "Speed",
         "CharacterService",
         "DataService",
         "PositionListener",
@@ -47,12 +47,12 @@ public static class GameComponentsLookup {
         typeof(BoxLoader.AssetComponent),
         typeof(BoxLoader.CameraComponent),
         typeof(BoxLoader.CharacterComponent),
+        typeof(BoxLoader.CharacterDataComponent),
         typeof(BoxLoader.ConveyorDataComponent),
         typeof(BoxLoader.ObjectsViewComponent),
         typeof(BoxLoader.PlayerComponent),
         typeof(BoxLoader.PositionComponent),
         typeof(BoxLoader.RotationComponent),
-        typeof(BoxLoader.SpeedComponent),
         typeof(CharacterServiceComponent),
         typeof(DataServiceComponent),
         typeof(PositionListenerComponent),

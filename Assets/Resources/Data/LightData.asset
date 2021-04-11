@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9345426776442581b08f352e5ee423, type: 3}
   m_Name: LightData
   m_EditorClassIdentifier: 
-  _assetName: 
-  _position: {x: 0, y: 0, z: 0}
+  _assetName: Lighters
+  _position: {x: -2.21, y: -7.87, z: 1.94}
   _rotation: {x: 0, y: 0, z: 0}
-  _sceneTagName: 0
+  _sceneTagName: 3

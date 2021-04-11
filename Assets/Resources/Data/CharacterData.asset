@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0df0aedf991c42a6ae315b9d9992a026, type: 3}
-  m_Name: PlayerData
+  m_Name: CharacterData
   m_EditorClassIdentifier: 
   _assetName: Character
   _startPosition: {x: 1, y: 0, z: -5}
   _startRotation: {x: 0, y: -45, z: 0}
-  _sceneTagName: 2
-  _speed: 1
+  _sceneTagName: 0
+  _isPlayer: 1
+  _speed: 2

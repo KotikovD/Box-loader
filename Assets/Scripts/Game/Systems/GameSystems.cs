@@ -21,7 +21,7 @@ namespace BoxLoader
 			
 			// Init - Usual
 			Add(new InitializeSimpleObjectsEntitiesSystem(contexts));
-			Add(new InitializePlayerEntitySystem(contexts));
+			Add(new InitializeCharactersEntitiesSystem(contexts));
 			Add(new InitializePlayerInputReactiveSystem(contexts));	
 			Add(new InitializeConveyorEntitiesSystem(contexts));	
 			

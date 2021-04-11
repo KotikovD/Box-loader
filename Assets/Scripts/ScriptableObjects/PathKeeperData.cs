@@ -11,7 +11,7 @@ namespace BoxLoader
 
 		[Header("ScriptableObjectFilesNames")]
 		[SerializeField] private string _camera = "CameraData";
-		[SerializeField] private string _player = "PlayerData";
+		[SerializeField] private string _character = "CharacterData";
 		
 		public string DataFolder => _dataFolder;
 
@@ -19,6 +19,6 @@ namespace BoxLoader
 
 		public string Camera => _camera;
 
-		public string Player => _player;
+		public string Character => _character;
 	}
 }
