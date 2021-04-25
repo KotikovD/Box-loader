@@ -23,3 +23,5 @@ MonoBehaviour:
     _name: Level/Conveyors
   - _tag: 3
     _name: Level/Light
+  - _tag: 5
+    _name: BoxPool

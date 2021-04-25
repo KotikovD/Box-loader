@@ -10,28 +10,36 @@ public static class GameComponentsLookup {
 
     public const int AnyPlayerListener = 0;
     public const int Asset = 1;
-    public const int Camera = 2;
-    public const int Character = 3;
-    public const int CharacterData = 4;
-    public const int ConveyorData = 5;
-    public const int ObjectsView = 6;
-    public const int Player = 7;
-    public const int Position = 8;
-    public const int Rotation = 9;
-    public const int CharacterService = 10;
-    public const int DataService = 11;
-    public const int PositionListener = 12;
-    public const int ViewObjectsService = 13;
+    public const int Box = 2;
+    public const int Boxes = 3;
+    public const int BoxView = 4;
+    public const int Camera = 5;
+    public const int Character = 6;
+    public const int CharacterData = 7;
+    public const int ConveyorData = 8;
+    public const int ConveyorView = 9;
+    public const int ObjectsView = 10;
+    public const int Player = 11;
+    public const int Position = 12;
+    public const int Rotation = 13;
+    public const int CharacterService = 14;
+    public const int DataService = 15;
+    public const int PositionListener = 16;
+    public const int ViewObjectsService = 17;
 
-    public const int TotalComponents = 14;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
         "AnyPlayerListener",
         "Asset",
+        "Box",
+        "Boxes",
+        "BoxView",
         "Camera",
         "Character",
         "CharacterData",
         "ConveyorData",
+        "ConveyorView",
         "ObjectsView",
         "Player",
         "Position",
@@ -45,10 +53,14 @@ public static class GameComponentsLookup {
     public static readonly System.Type[] componentTypes = {
         typeof(AnyPlayerListenerComponent),
         typeof(BoxLoader.AssetComponent),
+        typeof(BoxLoader.BoxComponent),
+        typeof(BoxLoader.BoxesComponent),
+        typeof(BoxLoader.BoxViewComponent),
         typeof(BoxLoader.CameraComponent),
         typeof(BoxLoader.CharacterComponent),
         typeof(BoxLoader.CharacterDataComponent),
         typeof(BoxLoader.ConveyorDataComponent),
+        typeof(BoxLoader.ConveyorViewComponent),
         typeof(BoxLoader.ObjectsViewComponent),
         typeof(BoxLoader.PlayerComponent),
         typeof(BoxLoader.PositionComponent),

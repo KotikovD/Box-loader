@@ -9,9 +9,9 @@ namespace BoxLoader
 	public sealed class SceneParentsNamesData : ScriptableObject, ISceneParentsNamesData
 	{
 		[SerializeField] private List<NameData> _names;
-		private readonly Dictionary<SceneTagNames, string> _parents = new Dictionary<SceneTagNames, string>();
+		private readonly Dictionary<SceneParentName, string> _parents = new Dictionary<SceneParentName, string>();
 
-		public Dictionary<SceneTagNames, string> Parents
+		public Dictionary<SceneParentName, string> Parents
 		{
 			//TODO move to generic utils
 			get
@@ -34,7 +34,7 @@ namespace BoxLoader
 		[Serializable]
 		private sealed class NameData
 		{
-			[SerializeField] internal SceneTagNames _tag;
+			[SerializeField] internal SceneParentName _tag;
 			[SerializeField] internal string _name;
 		}
 		

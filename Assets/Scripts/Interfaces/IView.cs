@@ -3,8 +3,8 @@ using UnityEngine;
 
 public interface IView
 {
-	Vector3 GetPosition { get; }
-	Quaternion GetRotation { get; }
+	Vector3 GetLocalPosition { get; }
+	Quaternion GetLocalRotation { get; }
 	string AssetName { get; }
-	SceneTagNames SceneTagName { get; }
+	SceneParentName SceneParentName { get; }
 }

@@ -11,17 +11,17 @@ public partial class GameEntity {
     public BoxLoader.ConveyorDataComponent conveyorData { get { return (BoxLoader.ConveyorDataComponent)GetComponent(GameComponentsLookup.ConveyorData); } }
     public bool hasConveyorData { get { return HasComponent(GameComponentsLookup.ConveyorData); } }
 
-    public void AddConveyorData(ConveyorData newConveyorData) {
+    public void AddConveyorData(ConveyorData newValue) {
         var index = GameComponentsLookup.ConveyorData;
         var component = (BoxLoader.ConveyorDataComponent)CreateComponent(index, typeof(BoxLoader.ConveyorDataComponent));
-        component.ConveyorData = newConveyorData;
+        component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceConveyorData(ConveyorData newConveyorData) {
+    public void ReplaceConveyorData(ConveyorData newValue) {
         var index = GameComponentsLookup.ConveyorData;
         var component = (BoxLoader.ConveyorDataComponent)CreateComponent(index, typeof(BoxLoader.ConveyorDataComponent));
-        component.ConveyorData = newConveyorData;
+        component.value = newValue;
         ReplaceComponent(index, component);
     }
 

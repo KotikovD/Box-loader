@@ -6,6 +6,6 @@ namespace BoxLoader
     [Game]
     public class CharacterComponent : IComponent
     {
-        public ICharacter Value;
+        public ICharacterView Value;
     }
 }

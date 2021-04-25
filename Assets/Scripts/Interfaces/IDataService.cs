@@ -6,7 +6,8 @@ using Entitas.CodeGeneration.Attributes;
 public interface IDataService
 {
 	CameraData CameraData { get; }
-	List<CharacterData> CharacterData { get; }
-	List<ConveyorData> ConveyorData { get; }
+	List<CharacterData> CharactersData { get; }
+	List<ConveyorData> ConveyorsData { get; }
 	public List<SomeObjectData> SomeObjectsData { get; }
+	public List<BoxData> BoxesData { get; }
 }

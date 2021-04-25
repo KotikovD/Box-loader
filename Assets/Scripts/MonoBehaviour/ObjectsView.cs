@@ -1,6 +1,6 @@
-﻿using System;
-using Entitas.Unity;
+﻿using Entitas.Unity;
 using UnityEngine;
+
 
 namespace BoxLoader
 {
@@ -11,10 +11,10 @@ namespace BoxLoader
 
 		public Transform Transform => transform;
 		public GameObject GameObject => gameObject;
-		public Vector3 GetPosition => transform.localPosition;
-		public Quaternion GetRotation => transform.localRotation;
+		public Vector3 GetLocalPosition => transform.localPosition;
+		public Quaternion GetLocalRotation => transform.localRotation;
 		public string AssetName => gameObject.name;
-		public SceneTagNames SceneTagName => EnumUtil.Parse<SceneTagNames>(gameObject.GetComponentInParent<GameObject>().name);
+		public SceneParentName SceneParentName => EnumUtil.Parse<SceneParentName>(gameObject.GetComponentInParent<GameObject>().name);
 
 
 		public void InitializeView(GameEntity entity, Transform parentTransform)
@@ -46,6 +46,12 @@ namespace BoxLoader
 			transform.rotation = rotation;
 		}
 
+		public Quaternion LookAt(Vector3 target)
+		{
+			transform.LookAt(target, Vector3.up);
+			return transform.localRotation;
+		}
+		
 		public void DestroyView()
 		{
 			Destroy(gameObject);
@@ -55,5 +61,7 @@ namespace BoxLoader
 		{
 			gameObject.Unlink();
 		}
+
+		
 	}
 }

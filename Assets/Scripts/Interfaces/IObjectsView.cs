@@ -10,4 +10,5 @@ public interface IObjectsView : IView
 	void SetPosition(Vector3 position);
 	void SetRotation(Quaternion rotation);
 	void DestroyView();
+	Quaternion LookAt(Vector3 target);
 }

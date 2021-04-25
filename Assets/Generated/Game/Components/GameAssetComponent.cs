@@ -11,7 +11,7 @@ public partial class GameEntity {
     public BoxLoader.AssetComponent asset { get { return (BoxLoader.AssetComponent)GetComponent(GameComponentsLookup.Asset); } }
     public bool hasAsset { get { return HasComponent(GameComponentsLookup.Asset); } }
 
-    public void AddAsset(string newAsset, BoxLoader.SceneTagNames newParentTag) {
+    public void AddAsset(string newAsset, BoxLoader.SceneParentName newParentTag) {
         var index = GameComponentsLookup.Asset;
         var component = (BoxLoader.AssetComponent)CreateComponent(index, typeof(BoxLoader.AssetComponent));
         component.Asset = newAsset;
@@ -19,7 +19,7 @@ public partial class GameEntity {
         AddComponent(index, component);
     }
 
-    public void ReplaceAsset(string newAsset, BoxLoader.SceneTagNames newParentTag) {
+    public void ReplaceAsset(string newAsset, BoxLoader.SceneParentName newParentTag) {
         var index = GameComponentsLookup.Asset;
         var component = (BoxLoader.AssetComponent)CreateComponent(index, typeof(BoxLoader.AssetComponent));
         component.Asset = newAsset;

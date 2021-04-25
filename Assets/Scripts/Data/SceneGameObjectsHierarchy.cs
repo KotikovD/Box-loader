@@ -8,11 +8,11 @@ namespace BoxLoader
 {
 	public sealed class SceneGameObjectsHierarchy : ISceneGameObjectsHierarchy
 	{
-		private readonly Dictionary<SceneTagNames, Transform> _parents;
+		private readonly Dictionary<SceneParentName, Transform> _parents;
 
 		public SceneGameObjectsHierarchy(ISceneParentsNamesData sceneParentsNamesData)
 		{
-			_parents = new Dictionary<SceneTagNames, Transform>();
+			_parents = new Dictionary<SceneParentName, Transform>();
 
 
 			foreach (var parent in sceneParentsNamesData.Parents)
@@ -22,7 +22,7 @@ namespace BoxLoader
 			}
 		}
 		
-		private void CreateHierarchy(List<string> names, SceneTagNames tag, Transform parent = null)
+		private void CreateHierarchy(List<string> names, SceneParentName tag, Transform parent = null)
 		{
 			var name = names.First();
 			if(IsNullOrEmpty(name))
@@ -79,7 +79,7 @@ namespace BoxLoader
 			}
 		}
 
-		public Transform GetParent(SceneTagNames nameTag)
+		public Transform GetParent(SceneParentName nameTag)
 		{
 			if (_parents.ContainsKey(nameTag))
 				return _parents[nameTag];

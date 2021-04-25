@@ -17,7 +17,7 @@ namespace BoxLoader
     ""name"": ""InputMaster"",
     ""maps"": [
         {
-            ""name"": ""Character"",
+            ""name"": ""CharacterView"",
             ""id"": ""7370323e-93fc-44d1-adff-b40b5eeeb614"",
             ""actions"": [
                 {
@@ -77,8 +77,8 @@ namespace BoxLoader
         }
     ]
 }");
-            // Character
-            m_Player = asset.FindActionMap("Character", throwIfNotFound: true);
+            // CharacterView
+            m_Player = asset.FindActionMap("CharacterView", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
         }
@@ -127,7 +127,7 @@ namespace BoxLoader
             asset.Disable();
         }
 
-        // Character
+        // CharacterView
         private readonly InputActionMap m_Player;
         private IPlayerActions m_PlayerActionsCallbackInterface;
         private readonly InputAction m_Player_Move;

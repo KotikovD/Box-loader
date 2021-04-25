@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 namespace BoxLoader
 {
-	public interface ICharacter
+	public interface ICharacterView
 	{
 		void InitializeView(GameEntity entity);
 		void Move(Vector3 destinationPoint);

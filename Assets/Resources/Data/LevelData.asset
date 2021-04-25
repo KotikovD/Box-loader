@@ -15,4 +15,4 @@ MonoBehaviour:
   _assetName: Room
   _position: {x: 0, y: 0, z: 0}
   _rotation: {x: 0, y: 0, z: 0}
-  _sceneTagName: 2
+  sceneParentName: 2

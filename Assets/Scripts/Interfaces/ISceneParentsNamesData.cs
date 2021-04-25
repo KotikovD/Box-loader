@@ -4,6 +4,6 @@ namespace BoxLoader
 {
 	public interface ISceneParentsNamesData
 	{
-		Dictionary<SceneTagNames, string> Parents { get; }
+		Dictionary<SceneParentName, string> Parents { get; }
 	}
 }

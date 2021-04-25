@@ -13,9 +13,9 @@ namespace BoxLoader
 
 		public void InitializeCharacter(GameContext context, GameEntity entity)
 		{
-			var characterComponent = entity.objectsView.Value.GameObject.GetComponent<Character>();
+			var characterComponent = entity.objectsView.Value.GameObject.GetComponent<CharacterView>();
 			if (characterComponent == null)
-				entity.objectsView.Value.GameObject.AddComponent<Character>();
+				entity.objectsView.Value.GameObject.AddComponent<CharacterView>();
 
 			characterComponent.InitializeView(entity);
 		}

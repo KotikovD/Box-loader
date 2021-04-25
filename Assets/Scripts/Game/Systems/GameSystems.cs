@@ -17,13 +17,16 @@ namespace BoxLoader
 			// Init - Reactive
 			Add(new CharactersReactiveSystem(contexts));
 			Add(new ObjectsViewReactiveSystem(contexts));
-			
-			
+			Add(new ConveyorsViewReactiveSystem(contexts));	
+			Add(new ConveyorsSetModeReactiveSystem(contexts));
+			Add(new BoxesViewReactiveSystem(contexts));
+
 			// Init - Usual
 			Add(new InitializeSimpleObjectsEntitiesSystem(contexts));
 			Add(new InitializeCharactersEntitiesSystem(contexts));
 			Add(new InitializePlayerInputReactiveSystem(contexts));	
 			Add(new InitializeConveyorEntitiesSystem(contexts));	
+			
 			
 			Add(new InitializeCameraMoveReactiveEventSystem(contexts));
 			Add(new InitializeProcessInputSystem(contexts));
@@ -31,6 +34,9 @@ namespace BoxLoader
 			
 			// Execute
 			Add(new VisualSynchronizerExecuteSystem(contexts));
+			Add(new InitializeBoxCreatorExecuteSystem(contexts));
+			Add(new ReceiverMoveBoxesExecuteSystem(contexts));
+
 			
 			
 			// Cleanup

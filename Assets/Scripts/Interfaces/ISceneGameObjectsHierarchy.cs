@@ -4,6 +4,6 @@ namespace BoxLoader
 {
 	public interface ISceneGameObjectsHierarchy
 	{
-		Transform GetParent(SceneTagNames nameTag);
+		Transform GetParent(SceneParentName nameTag);
 	}
 }

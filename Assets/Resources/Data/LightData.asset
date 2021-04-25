@@ -15,4 +15,4 @@ MonoBehaviour:
   _assetName: Lighters
   _position: {x: -2.21, y: -7.87, z: 1.94}
   _rotation: {x: 0, y: 0, z: 0}
-  _sceneTagName: 3
+  sceneParentName: 3

@@ -8,10 +8,10 @@ public sealed class SomeObjectData : ScriptableObjectExt
 	[SerializeField] private string _assetName;
 	[SerializeField] private Vector3 _position;
 	[SerializeField] private Vector3 _rotation;
-	[SerializeField] private SceneTagNames _sceneTagName;
+	[SerializeField] private SceneParentName sceneParentName;
 
-	public override Vector3 GetPosition => _position;
-	public override Quaternion GetRotation => Quaternion.Euler(_rotation);
+	public override Vector3 GetLocalPosition => _position;
+	public override Quaternion GetLocalRotation => Quaternion.Euler(_rotation);
 	public override string AssetName => _assetName;
-	public override SceneTagNames SceneTagName => _sceneTagName;
+	public override SceneParentName SceneParentName => sceneParentName;
 }

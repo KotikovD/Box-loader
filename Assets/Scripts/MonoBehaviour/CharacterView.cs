@@ -10,7 +10,7 @@ using UnityEngine.AI;
 namespace BoxLoader
 {
 	[RequireComponent(typeof(EntityLink))]
-	public sealed class Character : MonoBehaviourExt, ICharacter
+	public sealed class CharacterView : MonoBehaviourExt, ICharacterView
 	{
 		[SerializeField] private NavMeshAgent _navMeshAgent;
 		[SerializeField] private Animator _animator;

@@ -19,13 +19,13 @@ namespace BoxLoader
 		public void Initialize()
 		{
 			_cameraData = _contexts.game.dataService.value.CameraData;
-			var playerPosition = _contexts.game.dataService.value.CharacterData.Find(x => x.IsPlayer).GetPosition;
-			var cameraPosition = CalculateOffset(playerPosition, _cameraData.GetPosition);
+			var playerPosition = _contexts.game.dataService.value.CharactersData.Find(x => x.IsPlayer).GetLocalPosition;
+			var cameraPosition = CalculateOffset(playerPosition, _cameraData.GetLocalPosition);
 
 			_camera = _contexts.game.CreateEntity();
-			_camera.AddAsset(_cameraData.AssetName, _cameraData.SceneTagName);
+			_camera.AddAsset(_cameraData.AssetName, _cameraData.SceneParentName);
 			_camera.AddPosition(cameraPosition);
-			_camera.AddRotation(_cameraData.GetRotation);
+			_camera.AddRotation(_cameraData.GetLocalRotation);
 			_camera.isCamera = true;
 		}
 
@@ -46,7 +46,7 @@ namespace BoxLoader
 		
 		public void OnPosition(GameEntity entity, Vector3 value)
 		{
-			var newPosition = CalculateOffset(value, _cameraData.GetPosition);
+			var newPosition = CalculateOffset(value, _cameraData.GetLocalPosition);
 			var lerpPosition = Vector3.Lerp(_camera.position.value, newPosition,_cameraData.LerpSpeed);
 			_camera.objectsView.Value.SetPosition(lerpPosition);
 		}

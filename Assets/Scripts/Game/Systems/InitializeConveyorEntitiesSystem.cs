@@ -13,14 +13,14 @@ namespace BoxLoader
 
 		public void Initialize()
 		{
-			var conveyorsData = _context.dataService.value.ConveyorData;
+			var conveyorsData = _context.dataService.value.ConveyorsData;
 
 			foreach (var conveyor in conveyorsData)
 			{
 				var conveyorEntity = _context.CreateEntity();
-				conveyorEntity.AddAsset(conveyor.AssetName, conveyor.SceneTagName);
-				conveyorEntity.AddPosition(conveyor.GetPosition);
-				conveyorEntity.AddRotation(conveyor.GetRotation);
+				conveyorEntity.AddAsset(conveyor.AssetName, conveyor.SceneParentName);
+				conveyorEntity.AddPosition(conveyor.GetLocalPosition);
+				conveyorEntity.AddRotation(conveyor.GetLocalRotation);
 				conveyorEntity.AddConveyorData(conveyor);
 			}
 	

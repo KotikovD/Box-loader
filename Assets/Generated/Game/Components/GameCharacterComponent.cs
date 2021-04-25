@@ -11,14 +11,14 @@ public partial class GameEntity {
     public BoxLoader.CharacterComponent character { get { return (BoxLoader.CharacterComponent)GetComponent(GameComponentsLookup.Character); } }
     public bool hasCharacter { get { return HasComponent(GameComponentsLookup.Character); } }
 
-    public void AddCharacter(BoxLoader.ICharacter newValue) {
+    public void AddCharacter(BoxLoader.ICharacterView newValue) {
         var index = GameComponentsLookup.Character;
         var component = (BoxLoader.CharacterComponent)CreateComponent(index, typeof(BoxLoader.CharacterComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceCharacter(BoxLoader.ICharacter newValue) {
+    public void ReplaceCharacter(BoxLoader.ICharacterView newValue) {
         var index = GameComponentsLookup.Character;
         var component = (BoxLoader.CharacterComponent)CreateComponent(index, typeof(BoxLoader.CharacterComponent));
         component.Value = newValue;
