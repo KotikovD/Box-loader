@@ -12,7 +12,7 @@ namespace BoxLoader
 		private readonly Contexts _context;
 		private List<BoxData> _boxesData;
 		private readonly Array _maxBoxTypes;
-		private float _minDistanceBetweenBoxes = 3f; //TODO move to constants
+		private float _minDistanceBetweenBoxes = 2.3f; //TODO move to constants
 
 		public InitializeBoxCreatorExecuteSystem(Contexts context)
 		{

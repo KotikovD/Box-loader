@@ -19,7 +19,7 @@ namespace BoxLoader
 			{
 				var someEntity = _contexts.game.CreateEntity();
 				someEntity.AddAsset(someObject.AssetName, someObject.SceneParentName);
-				someEntity.AddPosition(someObject.GetLocalPosition);
+				someEntity.AddPosition(someObject.GetPosition);
 				someEntity.AddRotation(someObject.GetLocalRotation);
 			}
 		}

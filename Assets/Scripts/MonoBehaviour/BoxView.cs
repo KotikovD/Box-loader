@@ -1,6 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using DG.Tweening;
+using RSG;
 using UnityEngine;
+
 
 namespace BoxLoader
 {
@@ -13,10 +15,12 @@ namespace BoxLoader
 		private Bounds _bounds;
 		private Sequence _moveTween;
 		private bool _isAnimationMove;
+		private float _maxExtent;
 
 		private void Start()
 		{
 			_bounds = _collider.bounds;
+			_maxExtent = Mathf.Max(_bounds.extents.x,_bounds.extents.y,_bounds.extents.z);
 		}
 
 		public Vector3 ClosestPoint(Vector3 point)
@@ -31,6 +35,27 @@ namespace BoxLoader
 			return _bounds.Contains(localPos);
 		}
 		
+		public List<Vector3> GetUsingPositions(float usingOffset)
+		{
+			var result = new List<Vector3>();
+			
+			var pivot = transform.localPosition;
+			var offset = _maxExtent + usingOffset;
+			var interactPointOneSide = new Vector3(offset * -1, pivot.y * -1, offset * -1);
+			var interactPointSecondSide = new Vector3(offset, pivot.y * -1, offset);
+			
+			 result.Add(pivot + transform.forward.MultiplyTwoDirections(interactPointOneSide));
+			 result.Add(pivot + transform.forward.MultiplyTwoDirections(interactPointSecondSide));
+
+			var r0 = GameObject.CreatePrimitive(PrimitiveType.Sphere); //TODO remove
+			r0.transform.position = result[0];
+
+			var r1 = GameObject.CreatePrimitive(PrimitiveType.Sphere); //TODO remove
+			r1.transform.position = result[1];
+			
+			return result;
+		}
+
 		public void StopAnimationMoving()
 		{
 			_moveTween?.Pause();
@@ -54,6 +79,20 @@ namespace BoxLoader
 				_moveTween = tween;
 			}
 			
+		}
+
+		public IPromise DropAnimation(float speed)
+		{
+			var promise = new Promise();
+			var tween = DOTween.Sequence();
+			var target = transform.position + Vector3.down * 4f;
+			
+			tween.Append(transform.DOMove(target, speed)
+					.SetSpeedBased()
+					.SetEase(Ease.Linear))
+				.SetAutoKill(true).OnComplete(promise.Resolve);
+
+			return promise;
 		}
 		
 	}

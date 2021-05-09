@@ -22,7 +22,7 @@ namespace BoxLoader
 
 				characterEntity.AddCharacterData(character);
 				characterEntity.AddAsset(character.AssetName, character.SceneParentName);
-				characterEntity.AddPosition(character.GetLocalPosition);
+				characterEntity.AddPosition(character.GetPosition);
 				characterEntity.AddRotation(character.GetLocalRotation);
 
 				if (character.IsPlayer)

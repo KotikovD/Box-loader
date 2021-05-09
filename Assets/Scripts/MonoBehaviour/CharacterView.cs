@@ -3,6 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using DG.Tweening.Plugins.Options;
 using Entitas.Unity;
+using RSG;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,19 +14,25 @@ namespace BoxLoader
 	public sealed class CharacterView : MonoBehaviourExt, ICharacterView
 	{
 		[SerializeField] private NavMeshAgent _navMeshAgent;
-		[SerializeField] private Animator _animator;
+		[SerializeField] private CharacterAnimationController _characterAnimationController;
+		[SerializeField] private CarryPoint _carryPoint;
 		
 		private CharacterData _characterData;
-		private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
 		private NavMeshPath _navMeshPath;
 		private Sequence _moveTween;
 		private Sequence _animationTween;
 		private float _currentSpeed;
 		private float _wholePathTime;
 		private bool _isInitialized;
-
+		private Sequence _lookTween;
+		private IPromiseTimer promiseTimer;
+		
+		
+		public Transform CarryPoint => _carryPoint.transform;
+		
 		public void InitializeView(GameEntity entity)
 		{
+			promiseTimer = new PromiseTimer();
 			entity.AddCharacter(this);
 			_characterData = entity.characterData.value;
 			_navMeshPath = new NavMeshPath();
@@ -36,7 +43,8 @@ namespace BoxLoader
 		{
 			if(!_isInitialized) return;
 			
-			_animator.SetFloat(MoveSpeed, GetAnimationMoveSpeed());
+			promiseTimer.Update(Time.deltaTime);
+			_characterAnimationController.SetAnimationMoveSpeed(GetAnimationMoveSpeed());
 		}
 		
 		private Vector3[] CalculatePathCorners(Vector3 destination)
@@ -75,29 +83,46 @@ namespace BoxLoader
 			animationTween.Append(DOTween.To(() => _currentSpeed, x => _currentSpeed = x, 0f, _characterData.StoppingTime));
 			_animationTween = animationTween;
 		}
-
-		private void MoveProduced(Vector3[] corners)
-		{
-			_moveTween?.Kill();
-			var moveTween = DOTween.Sequence();
-			moveTween.Append(transform.DOPath(corners, _wholePathTime, PathType.CatmullRom).SetLookAt(0.01f));
-			_moveTween = moveTween;
-		}
 		
-		public void Move(Vector3 destinationPoint)
+		public IPromise Move(Vector3 destinationPoint)
 		{
+			var promise = new Promise();
 			var corners = CalculatePathCorners(destinationPoint);
-			if(corners.Length == 0)
-				return;
+			if (corners.Length == 0)
+				return Promise.Resolved();
 			
 			var length = CalculatePathLength(corners);
 			SetMoveAcceleration(length);
-			MoveProduced(corners);
+			
+			_moveTween?.Kill();
+			var moveTween = DOTween.Sequence();
+			moveTween.Append(transform.DOPath(corners, _wholePathTime, PathType.CatmullRom).SetLookAt(0.01f)).OnComplete(promise.Resolve);
+			_moveTween = moveTween;
+			
+			return promise;
 		}
 
-		public void Use(Vector3 destinationPoint)
+		public IPromise Pickup(float animationEventTime)
 		{
-			throw new System.NotImplementedException();
+			_characterAnimationController.Pickup();
+			return promiseTimer.WaitFor(animationEventTime);
+		}
+		
+		public IPromise DropBox(float animationEventTime)
+		{
+			_characterAnimationController.DropBox();
+			return promiseTimer.WaitFor(animationEventTime);
+		}
+
+		public IPromise LookAt(Vector3 target)
+		{
+			var promise = new Promise();
+			_lookTween?.Kill();
+			var lookTween = DOTween.Sequence();
+			lookTween.Append(transform.DOLookAt(target,0.3f, AxisConstraint.Y).OnComplete(promise.Resolve)); //TODO move dur to const
+			_lookTween = lookTween;
+
+			return promise;
 		}
 
 		public void DestroyCharacterComponent()

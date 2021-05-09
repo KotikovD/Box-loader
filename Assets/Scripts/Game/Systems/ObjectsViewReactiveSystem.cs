@@ -28,7 +28,9 @@ namespace BoxLoader
 		{
 			foreach (var entity in entities)
 			{
-				_context.viewObjectsService.value.DestroyView(entity);
+				if(entity.hasObjectsView)
+					_context.viewObjectsService.value.DestroyView(entity);
+				
 				_context.viewObjectsService.value.CreateView(_context, entity);
 			}
 		}

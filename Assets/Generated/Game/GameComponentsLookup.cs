@@ -21,13 +21,16 @@ public static class GameComponentsLookup {
     public const int ObjectsView = 10;
     public const int Player = 11;
     public const int Position = 12;
-    public const int Rotation = 13;
-    public const int CharacterService = 14;
-    public const int DataService = 15;
-    public const int PositionListener = 16;
-    public const int ViewObjectsService = 17;
+    public const int ReadyForUse = 13;
+    public const int Rotation = 14;
+    public const int Using = 15;
+    public const int WantToUse = 16;
+    public const int CharacterService = 17;
+    public const int DataService = 18;
+    public const int PositionListener = 19;
+    public const int ViewObjectsService = 20;
 
-    public const int TotalComponents = 18;
+    public const int TotalComponents = 21;
 
     public static readonly string[] componentNames = {
         "AnyPlayerListener",
@@ -43,7 +46,10 @@ public static class GameComponentsLookup {
         "ObjectsView",
         "Player",
         "Position",
+        "ReadyForUse",
         "Rotation",
+        "Using",
+        "WantToUse",
         "CharacterService",
         "DataService",
         "PositionListener",
@@ -64,7 +70,10 @@ public static class GameComponentsLookup {
         typeof(BoxLoader.ObjectsViewComponent),
         typeof(BoxLoader.PlayerComponent),
         typeof(BoxLoader.PositionComponent),
+        typeof(BoxLoader.ReadyForUseComponent),
         typeof(BoxLoader.RotationComponent),
+        typeof(BoxLoader.UsingComponent),
+        typeof(BoxLoader.WantToUseComponent),
         typeof(CharacterServiceComponent),
         typeof(DataServiceComponent),
         typeof(PositionListenerComponent),

@@ -17,7 +17,8 @@ namespace BoxLoader
 			var enties = _context.game.GetEntities(GameMatcher.ObjectsView);
 			foreach (var e in enties)
 			{
-				e.ReplacePosition(e.objectsView.Value.GetLocalPosition);
+				e.ReplacePosition(e.objectsView.Value.GetPosition);
+				e.ReplaceRotation(e.objectsView.Value.GetLocalRotation);
 			}
 		}
 		

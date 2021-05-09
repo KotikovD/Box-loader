@@ -11,7 +11,7 @@ namespace BoxLoader
 
 		public Transform Transform => transform;
 		public GameObject GameObject => gameObject;
-		public Vector3 GetLocalPosition => transform.localPosition;
+		public Vector3 GetPosition => transform.localPosition;
 		public Quaternion GetLocalRotation => transform.localRotation;
 		public string AssetName => gameObject.name;
 		public SceneParentName SceneParentName => EnumUtil.Parse<SceneParentName>(gameObject.GetComponentInParent<GameObject>().name);

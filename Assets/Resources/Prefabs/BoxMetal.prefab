@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7357511275579099154}
   - component: {fileID: 6125843747733263475}
   - component: {fileID: 727432881032890192}
-  - component: {fileID: 2943179236929445704}
-  - component: {fileID: 6327120328456184516}
+  - component: {fileID: 5162131585341336514}
+  - component: {fileID: 7284928500339629698}
   m_Layer: 0
   m_Name: BoxMetal
   m_TagString: Untagged
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6427a4f532b4f8aa40d2f693d4b8f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &2943179236929445704
+--- !u!65 &5162131585341336514
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,9 +70,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.97217274, y: 0.34807304, z: 0.57296556}
-  m_Center: {x: -0.00000005960464, y: 0.1762154, z: 0.038501594}
---- !u!114 &6327120328456184516
+  m_Size: {x: 0.56405413, y: 0.4189295, z: 0.93419325}
+  m_Center: {x: 0.024832368, y: 0.20959626, z: 0.000000059604645}
+--- !u!114 &7284928500339629698
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eccb2494ef04857a305b27dbdda93df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider: {fileID: 2943179236929445704}
+  _collider: {fileID: 5162131585341336514}
 --- !u!1 &9221547103599802082
 GameObject:
   m_ObjectHideFlags: 0

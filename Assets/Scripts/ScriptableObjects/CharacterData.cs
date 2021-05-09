@@ -17,7 +17,7 @@ public sealed partial class CharacterData : ScriptableObjectExt
 	[SerializeField]private float _minPathLengthForRun = 4f;
 	[SerializeField]private float _stoppingTime = 0.4f;
 	
-	public override Vector3 GetLocalPosition => _startPosition;
+	public override Vector3 GetPosition => _startPosition;
 	public override Quaternion GetLocalRotation => Quaternion.Euler(_startRotation);
 	public override string AssetName => _assetName;
 	public override SceneParentName SceneParentName => sceneParentName;

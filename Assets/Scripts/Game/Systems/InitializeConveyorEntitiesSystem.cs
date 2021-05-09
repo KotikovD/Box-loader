@@ -19,7 +19,7 @@ namespace BoxLoader
 			{
 				var conveyorEntity = _context.CreateEntity();
 				conveyorEntity.AddAsset(conveyor.AssetName, conveyor.SceneParentName);
-				conveyorEntity.AddPosition(conveyor.GetLocalPosition);
+				conveyorEntity.AddPosition(conveyor.GetPosition);
 				conveyorEntity.AddRotation(conveyor.GetLocalRotation);
 				conveyorEntity.AddConveyorData(conveyor);
 			}

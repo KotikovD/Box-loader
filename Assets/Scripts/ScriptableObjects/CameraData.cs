@@ -14,7 +14,7 @@ public sealed class CameraData : ScriptableObjectExt
 	[SerializeField] private float _lerpSpeed;
 	
 	public float LerpSpeed => _lerpSpeed;
-	public override Vector3 GetLocalPosition => _offsetByPlayer;
+	public override Vector3 GetPosition => _offsetByPlayer;
 	public override Quaternion GetLocalRotation => Quaternion.Euler(_startRotation);
 	public override string AssetName => _assetName;
 	public override SceneParentName SceneParentName => sceneParentName;

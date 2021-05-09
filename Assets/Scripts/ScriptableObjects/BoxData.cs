@@ -13,7 +13,7 @@ public sealed class BoxData : ScriptableObjectExt
 	[SerializeField] private Vector3 _startRotation;
 	[SerializeField] private SceneParentName _sceneParentName;
 
-	public override Vector3 GetLocalPosition => _startPosition;
+	public override Vector3 GetPosition => _startPosition;
 	public override Quaternion GetLocalRotation => Quaternion.Euler(_startRotation);
 	public override string AssetName => _boxType.ToString();
 	public override SceneParentName SceneParentName => _sceneParentName;

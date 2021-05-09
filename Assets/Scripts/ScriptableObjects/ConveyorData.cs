@@ -16,7 +16,7 @@ public sealed class ConveyorData : ScriptableObjectExt
 	[SerializeField, Range(0,5)] private float _workingSpeed = 3f;
 	[SerializeField, Range(0,10)] private float _spaceBetweenBoxes = 3f;
 
-	public override Vector3 GetLocalPosition => _startPosition;
+	public override Vector3 GetPosition => _startPosition;
 	public override Quaternion GetLocalRotation => Quaternion.Euler(_startRotation);
 	public override string AssetName => _assetName;
 	public override SceneParentName SceneParentName => sceneParentName;

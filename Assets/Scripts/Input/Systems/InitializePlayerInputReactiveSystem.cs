@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Entitas;
+using Entitas.Unity;
 using UnityEngine;
 
 
@@ -47,16 +49,16 @@ namespace BoxLoader
 		{
 			_camera = _contexts.game.cameraEntity.objectsView.Value.GameObject.GetComponent<Camera>();
 		}
-		
+
 		private void Move(bool isUse)
 		{
 			var ray = _camera.ScreenPointToRay(Input.mousePosition);
-			
+
 			if (Physics.Raycast(ray, out var hit, RayDistance, ~_layerMask))
 			{
 				_inputEntity.ReplaceTarget(hit.point);
 				_inputEntity.isUse = isUse;
-				Debug.Log("Move to " + hit.point + " Use = " + isUse);
+				Debug.Log("Move to " + hit.point + " Use = " + isUse); //TODO remove
 			}
 		}
 		

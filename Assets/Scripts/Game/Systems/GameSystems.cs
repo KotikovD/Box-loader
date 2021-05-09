@@ -20,16 +20,20 @@ namespace BoxLoader
 			Add(new ConveyorsViewReactiveSystem(contexts));	
 			Add(new ConveyorsSetModeReactiveSystem(contexts));
 			Add(new BoxesViewReactiveSystem(contexts));
+			Add(new RemoveBoxesFromConveyorsReactiveSystem(contexts));
+			
 
 			// Init - Usual
 			Add(new InitializeSimpleObjectsEntitiesSystem(contexts));
 			Add(new InitializeCharactersEntitiesSystem(contexts));
 			Add(new InitializePlayerInputReactiveSystem(contexts));	
-			Add(new InitializeConveyorEntitiesSystem(contexts));	
-			
-			
+			Add(new InitializeConveyorEntitiesSystem(contexts));
 			Add(new InitializeCameraMoveReactiveEventSystem(contexts));
-			Add(new InitializeProcessInputSystem(contexts));
+			
+			Add(new InitializeProcessUseObjectsReactiveSystem(contexts));
+			
+			// Init - Event
+			Add(new InitializeProcessInputEventSystem(contexts, mainOptions));
 			
 			
 			// Execute
