@@ -156,6 +156,7 @@ MonoBehaviour:
   _sceneParentsNamesData: {fileID: 11400000, guid: 3f1ec91b0ab482b4e9811a12bc734fc2,
     type: 2}
   _pathKeeper: {fileID: 11400000, guid: cb9babf5039e7534cadd367c22270bc3, type: 2}
+  _ordersData: {fileID: 11400000, guid: e032b12240189914f9b26d05672f854b, type: 2}
 --- !u!4 &718239428
 Transform:
   m_ObjectHideFlags: 0

@@ -17,20 +17,29 @@ public static class GameComponentsLookup {
     public const int Character = 6;
     public const int CharacterData = 7;
     public const int ConveyorData = 8;
-    public const int ConveyorView = 9;
-    public const int ObjectsView = 10;
-    public const int Player = 11;
-    public const int Position = 12;
-    public const int ReadyForUse = 13;
-    public const int Rotation = 14;
-    public const int Using = 15;
-    public const int WantToUse = 16;
-    public const int CharacterService = 17;
-    public const int DataService = 18;
-    public const int PositionListener = 19;
-    public const int ViewObjectsService = 20;
+    public const int ConveyorReceiver = 9;
+    public const int ConveyorSubmitter = 10;
+    public const int ConveyorView = 11;
+    public const int ObjectsView = 12;
+    public const int OrderCompleted = 13;
+    public const int Order = 14;
+    public const int OrderFinished = 15;
+    public const int OrderTimer = 16;
+    public const int Player = 17;
+    public const int Position = 18;
+    public const int ReadyForUse = 19;
+    public const int Remove = 20;
+    public const int Rotation = 21;
+    public const int Score = 22;
+    public const int SubmittedBox = 23;
+    public const int Using = 24;
+    public const int WantToUse = 25;
+    public const int CharacterService = 26;
+    public const int DataService = 27;
+    public const int PositionListener = 28;
+    public const int ViewObjectsService = 29;
 
-    public const int TotalComponents = 21;
+    public const int TotalComponents = 30;
 
     public static readonly string[] componentNames = {
         "AnyPlayerListener",
@@ -42,12 +51,21 @@ public static class GameComponentsLookup {
         "Character",
         "CharacterData",
         "ConveyorData",
+        "ConveyorReceiver",
+        "ConveyorSubmitter",
         "ConveyorView",
         "ObjectsView",
+        "OrderCompleted",
+        "Order",
+        "OrderFinished",
+        "OrderTimer",
         "Player",
         "Position",
         "ReadyForUse",
+        "Remove",
         "Rotation",
+        "Score",
+        "SubmittedBox",
         "Using",
         "WantToUse",
         "CharacterService",
@@ -66,12 +84,21 @@ public static class GameComponentsLookup {
         typeof(BoxLoader.CharacterComponent),
         typeof(BoxLoader.CharacterDataComponent),
         typeof(BoxLoader.ConveyorDataComponent),
+        typeof(BoxLoader.ConveyorReceiverComponent),
+        typeof(BoxLoader.ConveyorSubmitterComponent),
         typeof(BoxLoader.ConveyorViewComponent),
         typeof(BoxLoader.ObjectsViewComponent),
+        typeof(BoxLoader.OrderCompletedComponent),
+        typeof(BoxLoader.OrderComponent),
+        typeof(BoxLoader.OrderFinishedComponent),
+        typeof(BoxLoader.OrderTimerComponent),
         typeof(BoxLoader.PlayerComponent),
         typeof(BoxLoader.PositionComponent),
         typeof(BoxLoader.ReadyForUseComponent),
+        typeof(BoxLoader.RemoveComponent),
         typeof(BoxLoader.RotationComponent),
+        typeof(BoxLoader.ScoreComponent),
+        typeof(BoxLoader.SubmittedBoxComponent),
         typeof(BoxLoader.UsingComponent),
         typeof(BoxLoader.WantToUseComponent),
         typeof(CharacterServiceComponent),

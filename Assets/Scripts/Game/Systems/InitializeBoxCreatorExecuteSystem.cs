@@ -27,7 +27,7 @@ namespace BoxLoader
 		
 		public void Execute()
 		{
-			var conveyorsWithBoxes = _context.game.GetGroup(GameMatcher.Boxes);
+			var conveyorsWithBoxes = _context.game.GetGroup(GameMatcher.ConveyorReceiver);
 			
 			foreach (var entity in conveyorsWithBoxes)
 			{
@@ -43,7 +43,7 @@ namespace BoxLoader
 				var rotation = entity.conveyorView.value.GetMovingDirectionRotation;
 				boxEntity.ReplaceRotation(rotation);
 
-				boxEntity.isBox = true;
+				boxEntity.AddBox(boxData.BoxType);
 				entity.boxes.value.Add(boxEntity);
 			}
 		}

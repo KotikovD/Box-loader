@@ -20,9 +20,12 @@ namespace BoxLoader
 			Add(new ConveyorsViewReactiveSystem(contexts));	
 			Add(new ConveyorsSetModeReactiveSystem(contexts));
 			Add(new BoxesViewReactiveSystem(contexts));
-			Add(new RemoveBoxesFromConveyorsReactiveSystem(contexts));
+			Add(new RemoveBoxesFromConveyorsExecuteSystem(contexts));
+			Add(new RemoveReactiveSystem(contexts));
+			Add(new CreateOrdersReactiveSystem(contexts, mainOptions));
+			Add(new ResetOrdersReactiveSystem(contexts));
+			Add(new AcceptCompleteOrdersReactiveSystem(contexts));
 			
-
 			// Init - Usual
 			Add(new InitializeSimpleObjectsEntitiesSystem(contexts));
 			Add(new InitializeCharactersEntitiesSystem(contexts));
@@ -39,13 +42,19 @@ namespace BoxLoader
 			// Execute
 			Add(new VisualSynchronizerExecuteSystem(contexts));
 			Add(new InitializeBoxCreatorExecuteSystem(contexts));
-			Add(new ReceiverMoveBoxesExecuteSystem(contexts));
+			Add(new ConveyorsMoveBoxesExecuteSystem(contexts));
+			Add(new OrdersProcessExecuteSystem(contexts));
 
 			
 			
 			// Cleanup
 			// Add(new DestroyEntitySystem(contexts));
 
+			
+			// доделать сабимттер в конвеер вью, туда Тайбл скрипт, на который можно тыкнуть и получить точки, куда встать и повернуться, положить коробку
+			// систему создания заказов для конвееров мола саббмиттер. Только создание заказов
+			// система обработки коробок саббмитерами, она принимает коробки, редактирует заказ или перезапускает его
+			
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 namespace BoxLoader
@@ -12,6 +13,11 @@ namespace BoxLoader
 		public static Vector3 MultiplyTwoDirections(this Vector3 own, Vector3 multiplier)
 		{
 			return new Vector3(own.x * multiplier.x, multiplier.y, own.z * multiplier.z);
+		}
+		
+		public static T ParseEnum<T>(string value)
+		{
+			return (T) Enum.Parse(typeof(T), value, true);
 		}
 	}
 }

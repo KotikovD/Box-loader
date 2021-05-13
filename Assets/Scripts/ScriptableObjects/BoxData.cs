@@ -21,5 +21,6 @@ public sealed class BoxData : ScriptableObjectExt
 
 	[Header("Box")] 
 	[SerializeField] private BoxType _boxType;
+	[SerializeField] private int _scorePoints;
 	
 }

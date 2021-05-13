@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Entitas;
 
 
@@ -20,7 +21,7 @@ namespace BoxLoader
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return !entity.hasBoxes;
+			return entity.hasBoxes;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
@@ -28,9 +29,21 @@ namespace BoxLoader
 			foreach (var entity in entities)
 			{
 				entity.conveyorView.value.SetWorkingMode(entity.conveyorData.value.ConveyorMode);
-				
-				if (entity.conveyorData.value.ConveyorMode == ConveyorMode.Receiver)
-					entity.AddBoxes(new List<GameEntity>());
+
+				switch (entity.conveyorData.value.ConveyorMode)
+				{
+					case ConveyorMode.Submitter:
+						entity.isConveyorSubmitter = true;
+						entity.AddOrder(new List<BoxesOrder>(), int.MinValue, float.MinValue);
+						entity.AddOrderTimer(0);
+						break;
+					case ConveyorMode.Receiver:
+						entity.isConveyorReceiver = true;
+						break;
+					default:
+						throw new ArgumentOutOfRangeException();
+				}
+
 			}
 		}
 	}

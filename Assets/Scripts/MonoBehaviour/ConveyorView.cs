@@ -15,6 +15,7 @@ namespace BoxLoader
 		[SerializeField] private Renderer _movingBelt;
 		[SerializeField] private Transform _innerPoint;
 		[SerializeField] private Transform _outPoint;
+		[SerializeField] private Table _table;
 
 		private Material _beltMaterial;
 		private int _beltScrollSpeedId;
@@ -25,7 +26,23 @@ namespace BoxLoader
 
 		public Vector3 DestinationMovePoint => _destinationMovePoint.position;
 		public Vector3 StartMovePoint => _startMovePoint.position;
+		public Table Table => _table;
 
+		public Vector3 GetLoadPoint(float usingOffset, float maxExtent)
+		{
+			//var pivot = transform.localPosition;
+			var offset = maxExtent + usingOffset;
+			var interactPointOneSide = new Vector3(offset, StartMovePoint.y, offset) * -1;
+			
+			var result = StartMovePoint + transform.forward.MultiplyTwoDirections(interactPointOneSide);
+			
+			var r0 = GameObject.CreatePrimitive(PrimitiveType.Sphere); //TODO remove
+			r0.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+			r0.transform.position = result;
+			
+			return result;
+		}
+		
 		public Quaternion GetMovingDirectionRotation
 		{
 			get
@@ -73,7 +90,7 @@ namespace BoxLoader
 		
 		public void Stop()
 		{
-			_beltMaterial.SetFloat(_beltScrollSpeedId, 0f);
+			_beltMaterial.SetFloat(_beltScrollSpeedId, 0f); //TODO плавная остановка
 		}
 		
 	}

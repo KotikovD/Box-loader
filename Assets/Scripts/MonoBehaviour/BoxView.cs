@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using RSG;
 using UnityEngine;
 
@@ -16,6 +18,8 @@ namespace BoxLoader
 		private Sequence _moveTween;
 		private bool _isAnimationMove;
 		private float _maxExtent;
+		private TweenerCore<Vector3, Vector3, VectorOptions> _moveTween1;
+		public float MaxExtent => _maxExtent;
 
 		private void Start()
 		{
@@ -41,16 +45,18 @@ namespace BoxLoader
 			
 			var pivot = transform.localPosition;
 			var offset = _maxExtent + usingOffset;
-			var interactPointOneSide = new Vector3(offset * -1, pivot.y * -1, offset * -1);
+			var interactPointOneSide = new Vector3(offset, pivot.y, offset) * -1;
 			var interactPointSecondSide = new Vector3(offset, pivot.y * -1, offset);
 			
 			 result.Add(pivot + transform.forward.MultiplyTwoDirections(interactPointOneSide));
 			 result.Add(pivot + transform.forward.MultiplyTwoDirections(interactPointSecondSide));
 
 			var r0 = GameObject.CreatePrimitive(PrimitiveType.Sphere); //TODO remove
+			r0.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 			r0.transform.position = result[0];
 
 			var r1 = GameObject.CreatePrimitive(PrimitiveType.Sphere); //TODO remove
+			r1.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 			r1.transform.position = result[1];
 			
 			return result;
@@ -58,12 +64,28 @@ namespace BoxLoader
 
 		public void StopAnimationMoving()
 		{
-			_moveTween?.Pause();
+			_moveTween1?.Pause();
 		}
-		
 		public void AnimationMove(Vector3 target, float speed)
 		{
+			if (_moveTween1.IsActive())
+				//if(_moveTween != null)
+			{
+				_moveTween1.Play();
+			}
+			else
+			{
+				_moveTween1 = transform.DOMove(target, speed).SetEase(Ease.Linear);
+				_moveTween1.ChangeStartValue(transform.position);
+			}
+			
+			
+		}
+		
+		public void AnimationMove1(Vector3 target, float speed)
+		{
 			if (_moveTween.IsActive())
+			//if(_moveTween != null)
 			{
 				_moveTween.Play();
 			}
@@ -71,13 +93,27 @@ namespace BoxLoader
 			{
 				_moveTween?.Kill();
 				var tween = DOTween.Sequence();
-				tween.Append(transform.DOMove(target, speed)
-						.SetSpeedBased()
-						.SetEase(Ease.Linear))
-						.SetAutoKill(true);
-			
+
+				var r = transform.DOMove(target, speed)
+					.SetEase(Ease.Linear);
+				tween.Append(transform.DOMove(target, speed).SetEase(Ease.Linear));
+
+				tween.SetAutoKill(true);
+				tween.OnComplete(()=> tween = null);
+					//.OnComplete(() => _moveTween = null);
+					//.SetRecyclable(true); fsdf
+
+					//.OnComplete(() => transform.DORestart());
+						//.SetAutoKill(true)
+				//tween.Append(DOTween.To(() => transform.localPosition, x=> transform.localPosition = x, target, speed).SetEase(Ease.Linear).OnComplete(()=>transform.DORestart()));
+				
+				
+				
 				_moveTween = tween;
+				//_moveTween.OnComplete(() => _moveTween = null);
+				//_moveTween.SetAutoKill(true);
 			}
+			
 			
 		}
 

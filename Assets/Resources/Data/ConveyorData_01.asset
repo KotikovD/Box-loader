@@ -16,6 +16,6 @@ MonoBehaviour:
   _startPosition: {x: -3, y: 0, z: -7}
   _startRotation: {x: 0, y: -90, z: 0}
   sceneParentName: 4
-  _conveyorMode: 2
+  _conveyorMode: 1
   _workingSpeed: 2.67
   _spaceBetweenBoxes: 3

@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly BoxLoader.BoxComponent boxComponent = new BoxLoader.BoxComponent();
+    public BoxLoader.BoxComponent box { get { return (BoxLoader.BoxComponent)GetComponent(GameComponentsLookup.Box); } }
+    public bool hasBox { get { return HasComponent(GameComponentsLookup.Box); } }
 
-    public bool isBox {
-        get { return HasComponent(GameComponentsLookup.Box); }
-        set {
-            if (value != isBox) {
-                var index = GameComponentsLookup.Box;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : boxComponent;
+    public void AddBox(BoxLoader.BoxType newValue) {
+        var index = GameComponentsLookup.Box;
+        var component = (BoxLoader.BoxComponent)CreateComponent(index, typeof(BoxLoader.BoxComponent));
+        component.value = newValue;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceBox(BoxLoader.BoxType newValue) {
+        var index = GameComponentsLookup.Box;
+        var component = (BoxLoader.BoxComponent)CreateComponent(index, typeof(BoxLoader.BoxComponent));
+        component.value = newValue;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveBox() {
+        RemoveComponent(GameComponentsLookup.Box);
     }
 }
 

@@ -31,15 +31,26 @@ namespace BoxLoader
 		}
 		protected override void Execute(List<GameEntity> entities)
 		{
-			var entity = entities.Last();
+			var box = entities.Last();
+			var conveyorsWithBoxes = _context.GetGroup(GameMatcher.AllOf(GameMatcher.Boxes,GameMatcher.ConveyorReceiver));
+			
+			foreach (var conveyor in conveyorsWithBoxes)
+			{
+				if (conveyor.boxes.value.Contains(box))
+				{
+					conveyor.boxes.value.Remove(box);
+					break;
+				}
+			}
 			
 			_playerEntity.character.Value.Pickup(0.25f) //TODO move to const
 				.Then(() =>
 				{
-					entity.isWantToUse = false;
-					entity.isReadyForUse = false;
-					entity.objectsView.Value.SetParent(_playerEntity.character.Value.CarryPoint);
-					entity.isUsing = true;
+					box.isWantToUse = false;
+					box.isReadyForUse = false;
+					box.objectsView.Value.SetParent(_playerEntity.character.Value.CarryPoint);
+					box.isUsing = true;
+					
 				});
 		}
 		

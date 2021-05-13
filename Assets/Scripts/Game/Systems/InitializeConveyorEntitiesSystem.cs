@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using System.Collections.Generic;
+using Entitas;
 
 namespace BoxLoader
 {
@@ -22,6 +23,7 @@ namespace BoxLoader
 				conveyorEntity.AddPosition(conveyor.GetPosition);
 				conveyorEntity.AddRotation(conveyor.GetLocalRotation);
 				conveyorEntity.AddConveyorData(conveyor);
+				conveyorEntity.AddBoxes(new List<GameEntity>());
 			}
 	
 		}

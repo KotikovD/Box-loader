@@ -14,7 +14,7 @@ namespace BoxLoader
 		public Vector3 GetPosition => transform.localPosition;
 		public Quaternion GetLocalRotation => transform.localRotation;
 		public string AssetName => gameObject.name;
-		public SceneParentName SceneParentName => EnumUtil.Parse<SceneParentName>(gameObject.GetComponentInParent<GameObject>().name);
+		public SceneParentName SceneParentName => CustomUtils.ParseEnum<SceneParentName>(gameObject.GetComponentInParent<GameObject>().name);
 
 
 		public void InitializeView(GameEntity entity, Transform parentTransform)
@@ -54,13 +54,10 @@ namespace BoxLoader
 		
 		public void DestroyView()
 		{
+			gameObject.Unlink();
 			Destroy(gameObject);
 		}
-
-		private void OnDestroy()
-		{
-			gameObject.Unlink();
-		}
+		
 
 		
 	}

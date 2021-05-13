@@ -7,14 +7,14 @@ using UnityEngine;
 
 namespace BoxLoader
 {
-	class ReceiverMoveBoxesExecuteSystem : IExecuteSystem
+	class ConveyorsMoveBoxesExecuteSystem : IExecuteSystem
 	{
 		private readonly Contexts _context;
 		private List<BoxData> _boxesData; 
 		private Sequence _moveTween;
 		private float _boxStopDistanceConst = 0.1f;  //TODO move to constants
 
-		public ReceiverMoveBoxesExecuteSystem(Contexts context)
+		public ConveyorsMoveBoxesExecuteSystem(Contexts context)
 		{
 			_context = context;
 		}
@@ -23,26 +23,30 @@ namespace BoxLoader
 		{
 			var conveyorsWithBoxes = _context.game.GetGroup(GameMatcher.Boxes);
 
-			foreach (var entity in conveyorsWithBoxes)
+			foreach (var conveyor in conveyorsWithBoxes)
 			{
-				if(!CheckBoxesReadyForAnimation(entity)) continue;
+				if(!CheckBoxesReadyForAnimation(conveyor)) continue;
 				
-				if (AllowedToMoveBoxes(entity))
+				if (AllowedToMoveBoxes(conveyor))
 				{
-					MoveBoxes(entity);
+					MoveBoxes(conveyor);
 				}
 				else
 				{
-					StopMovingBoxes(entity);
-					CheckFirstBoxReadyForUse(entity);
+					StopMovingBoxes(conveyor);
+					SetFirstBoxReadyForAction(conveyor);
 				}
 			}
 		}
 
-		private void CheckFirstBoxReadyForUse(GameEntity entity)
+		private void SetFirstBoxReadyForAction(GameEntity conveyor)
 		{
-			var firstBox = entity.boxes.value.First();
-			firstBox.isReadyForUse = true;
+			var firstBox = conveyor.boxes.value.First();
+			
+			if(conveyor.isConveyorReceiver)
+				firstBox.isReadyForUse = true;
+			else if (conveyor.isConveyorSubmitter)
+				firstBox.isRemove = true;
 		}
 
 		private void MoveBoxes(GameEntity entity)
@@ -70,7 +74,7 @@ namespace BoxLoader
 
 		private bool CheckBoxesReadyForAnimation(GameEntity entity)
 		{
-			return entity.boxes.value.Last().hasObjectsView;
+			return entity.boxes.value.Count > 0 && entity.boxes.value.Last().hasObjectsView;
 		}
 		
 		private bool AllowedToMoveBoxes(GameEntity entity)
