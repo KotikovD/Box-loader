@@ -10,7 +10,7 @@ namespace BoxLoader
 		private readonly GameContext _context;
 		private OrdersData _ordersData;
 		private Array _maxBoxTypes;
-		private int _score;
+
 		
 		public CreateOrdersReactiveSystem(Contexts contexts, MainOptions mainOptions) : base(contexts.game)
 		{
@@ -43,8 +43,9 @@ namespace BoxLoader
 		private (List<BoxesOrder> order, int seconds, float stratTime) GenerateOrder()
 		{
 			var result = new List<BoxesOrder>();
-			var coeficient = _score > 0
-				? Mathf.Round(_score / _ordersData.RaiseScoreStep) * _ordersData.MultiplyingCoefficient + 1
+			var score = _context.score.value;
+			var coeficient = score > 0
+				? Mathf.Round(score / _ordersData.RaiseScoreStep) * _ordersData.MultiplyingCoefficient + 1
 				: 1;
 
 			var boxesCount = _ordersData.StartCountBoxesInOrder * coeficient;

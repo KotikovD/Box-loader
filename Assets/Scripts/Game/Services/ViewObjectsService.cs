@@ -17,10 +17,11 @@ namespace BoxLoader
 		public void CreateView(GameContext context, GameEntity entity)
 		{
 			var prefab = _prefabLoader.GetPrefab(entity.asset.Asset);
-			var obj = Object.Instantiate(prefab);
+			var parent = _sceneGameObjectsHierarchy.GetParent(entity.asset.ParentTag);
+			var obj = Object.Instantiate(prefab, parent);
 			obj.name = entity.asset.Asset;
 			var view = obj.GetComponent<ObjectsView>();
-			var parent = _sceneGameObjectsHierarchy.GetParent(entity.asset.ParentTag);
+			
 			view.InitializeView(entity, parent);
 		}
 

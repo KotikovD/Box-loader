@@ -21,9 +21,14 @@ namespace BoxLoader
 		{
 			entity.AddObjectsView(this);
 			_entityLink = gameObject.Link(entity);
-			SetPosition(entity.position.value);
-			SetRotation(entity.rotation.value);
-			SetParent(parentTransform);
+			
+			if(entity.hasPosition)
+				SetPosition(entity.position.value);
+			
+			if(entity.hasRotation)
+				SetRotation(entity.rotation.value);
+			
+			//SetParent(parentTransform);
 		}
 
 		public void SetActive(bool isActive)

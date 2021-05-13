@@ -26,9 +26,28 @@ namespace BoxLoader
 		{
 			foreach (var gameEntity in entities)
 			{
+				UpdateScore(gameEntity);
+				
 				gameEntity.isOrderCompleted = false;
 				gameEntity.isOrderFinished = true;
 			}
 		}
+
+		private void UpdateScore(GameEntity gameEntity)
+		{
+			var scorePoints = GetScorePoints(gameEntity.order.value);
+			var currentScore = _context.score.value;
+			_context.ReplaceScore(scorePoints + currentScore);
+		}
+
+		private int GetScorePoints(List<BoxesOrder> boxes)
+		{
+			var result = 0;
+			foreach (var box in boxes)
+				result += _context.dataService.value.BoxesData.Find(x => x.BoxType == box.BoxType).ScorePoints;
+			
+			return result;
+		}
+		
 	}
 }

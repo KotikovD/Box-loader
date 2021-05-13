@@ -3,7 +3,7 @@ using NaughtyAttributes;
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName = "GameData/data")]
+[CreateAssetMenu(menuName = "GameData/ConveyorData")]
 public sealed class ConveyorData : ScriptableObjectExt
 {
 	[Header("View")]

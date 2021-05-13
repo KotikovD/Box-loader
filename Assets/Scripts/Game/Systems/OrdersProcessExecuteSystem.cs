@@ -13,14 +13,7 @@ namespace BoxLoader
 		{
 			_context = context;
 		}
-		
-		// public void Initialize() //TODO remove
-		// {
-		// 	var timerGo = new GameObject("Timer");
-		// 	var timer = timerGo.AddComponent<Timer>();
-		// 	_timer = timer;
-		// }
-		
+
 		public void Execute()
 		{
 			var conveyors = _context.game.GetEntities(GameMatcher.AllOf(GameMatcher.Order, GameMatcher.Boxes, GameMatcher.ConveyorSubmitter, GameMatcher.OrderTimer));

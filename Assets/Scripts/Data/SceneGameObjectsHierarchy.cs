@@ -71,8 +71,7 @@ namespace BoxLoader
 				}
 				else
 				{
-					var newGo = new GameObject(name);
-					var transform = newGo.transform;
+					var transform = foundChild;
 					foundChild.SetParent(transform);
 					_parents.Add(tag, transform);
 				}

@@ -14,7 +14,7 @@ namespace BoxLoader
 		
 		public void Execute()
 		{
-			var enties = _context.game.GetEntities(GameMatcher.ObjectsView);
+			var enties = _context.game.GetEntities(GameMatcher.AllOf(GameMatcher.ObjectsView, GameMatcher.Position, GameMatcher.Rotation));
 			foreach (var e in enties)
 			{
 				e.ReplacePosition(e.objectsView.Value.GetPosition);

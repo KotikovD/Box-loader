@@ -13,6 +13,7 @@ namespace BoxLoader
 			Add(new InitializeDataServiceSystem(contexts, mainOptions.PathKeeper));
 			Add(new InitializeCharacterServiceSystem(contexts, mainOptions.PathKeeper));
 			Add(new InitializeObjectsViewServiceSystem(contexts, mainOptions));
+			Add(new InitializeGameUiSystem(contexts));
 			
 			// Init - Reactive
 			Add(new CharactersReactiveSystem(contexts));

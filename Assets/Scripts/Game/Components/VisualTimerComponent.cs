@@ -1,6 +1,7 @@
 ﻿using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
+
 namespace BoxLoader
 {
 	[Unique]
