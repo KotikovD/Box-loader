@@ -4,8 +4,6 @@ namespace BoxLoader
 	{
 		public GameSystems(Contexts contexts, MainOptions mainOptions)
 		{
-			//TODO implement Teardown methods for all sys
-			//TODO refactor namespaces
 			
 			// Init - Global
 			Add(new GameEventSystems(contexts));
@@ -13,7 +11,7 @@ namespace BoxLoader
 			Add(new InitializeDataServiceSystem(contexts, mainOptions.PathKeeper));
 			Add(new InitializeCharacterServiceSystem(contexts, mainOptions.PathKeeper));
 			Add(new InitializeObjectsViewServiceSystem(contexts, mainOptions));
-			Add(new InitializeGameUiSystem(contexts));
+			Add(new InitializeScoreUiReactiveSystem(contexts));
 			
 			// Init - Reactive
 			Add(new CharactersReactiveSystem(contexts));
@@ -26,6 +24,9 @@ namespace BoxLoader
 			Add(new CreateOrdersReactiveSystem(contexts, mainOptions));
 			Add(new ResetOrdersReactiveSystem(contexts));
 			Add(new AcceptCompleteOrdersReactiveSystem(contexts));
+			Add(new UpdateScoreViewReactiveSystem(contexts));
+			Add(new InitializeConveyorUiOrderReactiveSystem(contexts));
+			Add(new ReadyOrdersSetterReactiveSystem(contexts));
 			
 			// Init - Usual
 			Add(new InitializeSimpleObjectsEntitiesSystem(contexts));
@@ -33,29 +34,22 @@ namespace BoxLoader
 			Add(new InitializePlayerInputReactiveSystem(contexts));	
 			Add(new InitializeConveyorEntitiesSystem(contexts));
 			Add(new InitializeCameraMoveReactiveEventSystem(contexts));
-			
 			Add(new InitializeProcessUseObjectsReactiveSystem(contexts));
 			
 			// Init - Event
 			Add(new InitializeProcessInputEventSystem(contexts, mainOptions));
-			
-			
+
 			// Execute
 			Add(new VisualSynchronizerExecuteSystem(contexts));
 			Add(new InitializeBoxCreatorExecuteSystem(contexts));
 			Add(new ConveyorsMoveBoxesExecuteSystem(contexts));
 			Add(new OrdersProcessExecuteSystem(contexts));
-
+			Add(new ConveyorUiUpdateAnchorsExecuteSystem(contexts));
+			Add(new StandByTimerExecuteSystem(contexts));
 			
 			
 			// Cleanup
 			// Add(new DestroyEntitySystem(contexts));
-
-			
-			// доделать сабимттер в конвеер вью, туда Тайбл скрипт, на который можно тыкнуть и получить точки, куда встать и повернуться, положить коробку
-			// систему создания заказов для конвееров мола саббмиттер. Только создание заказов
-			// система обработки коробок саббмитерами, она принимает коробки, редактирует заказ или перезапускает его
-			
 		}
 	}
 }

@@ -26,7 +26,7 @@ namespace BoxLoader
 			_camera.AddAsset(_cameraData.AssetName, _cameraData.SceneParentName);
 			_camera.AddPosition(cameraPosition);
 			_camera.AddRotation(_cameraData.GetLocalRotation);
-			_camera.isCamera = true;
+			_camera.AddCamera(null);
 		}
 
 		protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -36,7 +36,7 @@ namespace BoxLoader
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.isCamera && entity.hasObjectsView;
+			return entity.hasCamera && entity.hasObjectsView;
 		}
 
 		protected override void Execute(List<GameEntity> entities)

@@ -39,6 +39,7 @@ namespace BoxLoader
 		public void SetParent(Transform parent, bool worldPositionStays = true)
 		{
 			transform.SetParent(parent, worldPositionStays);
+			
 		}
 
 		public void SetPosition(Vector3 position)

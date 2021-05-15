@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Entitas;
+using RSG;
 using UnityEngine;
 
 namespace BoxLoader
@@ -21,7 +22,7 @@ namespace BoxLoader
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return entity.hasOrder;
+			return entity.hasOrder && entity.hasConveyorView;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
@@ -29,9 +30,11 @@ namespace BoxLoader
 			foreach (var gameEntity in entities)
 			{
 				gameEntity.isOrderFinished = false;
-				//gameEntity.RemoveOrder();
-				gameEntity.ReplaceOrder(new List<BoxesOrder>(), int.MinValue, float.MinValue);
-				gameEntity.ReplaceOrderTimer(0);
+				gameEntity.RemoveOrder();
+				gameEntity.RemoveOrderTimer();
+				gameEntity.orderUiView.value.RemoveCurrentOrder(true);
+				gameEntity.AddStandByTimer(Time.time, 5f); //TODO move to config
+				gameEntity.conveyorView.value.Lamp.NoOrderLampBehaviour();
 			}
 		}
 	}

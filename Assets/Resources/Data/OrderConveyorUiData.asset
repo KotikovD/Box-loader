@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad723de3967491cb53aa2c190cc4404, type: 3}
+  m_Name: OrderConveyorUiData
+  m_EditorClassIdentifier: 
+  _sceneParentName: 1
+  _orderConveyorUiData: OrderConveyorUi
+  _noOrderLocalizationKey: '#no_order_localization_key'
+  _alarmTime: 0.33
+  _defaultTimerColor: {r: 1, g: 1, b: 1, a: 1}
+  _alarmTimerColor: {r: 1, g: 0.1462264, b: 0.1462264, a: 1}
+  _orderStrokeUiView: {fileID: 763006608061642272, guid: 042af6af123b1fa429f7e447c20d89e4,
+    type: 3}
+  _defaultStrokeColor: {r: 1, g: 1, b: 1, a: 1}
+  _completeStrokeColor: {r: 0.018912422, g: 0.8018868, b: 0.16664341, a: 1}

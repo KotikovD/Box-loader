@@ -9,19 +9,30 @@
 public partial class GameContext {
 
     public GameEntity cameraEntity { get { return GetGroup(GameMatcher.Camera).GetSingleEntity(); } }
+    public BoxLoader.CameraComponent camera { get { return cameraEntity.camera; } }
+    public bool hasCamera { get { return cameraEntity != null; } }
 
-    public bool isCamera {
-        get { return cameraEntity != null; }
-        set {
-            var entity = cameraEntity;
-            if (value != (entity != null)) {
-                if (value) {
-                    CreateEntity().isCamera = true;
-                } else {
-                    entity.Destroy();
-                }
-            }
+    public GameEntity SetCamera(UnityEngine.Camera newValue) {
+        if (hasCamera) {
+            throw new Entitas.EntitasException("Could not set Camera!\n" + this + " already has an entity with BoxLoader.CameraComponent!",
+                "You should check if the context already has a cameraEntity before setting it or use context.ReplaceCamera().");
         }
+        var entity = CreateEntity();
+        entity.AddCamera(newValue);
+        return entity;
+    }
+
+    public void ReplaceCamera(UnityEngine.Camera newValue) {
+        var entity = cameraEntity;
+        if (entity == null) {
+            entity = SetCamera(newValue);
+        } else {
+            entity.ReplaceCamera(newValue);
+        }
+    }
+
+    public void RemoveCamera() {
+        cameraEntity.Destroy();
     }
 }
 
@@ -35,25 +46,25 @@ public partial class GameContext {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly BoxLoader.CameraComponent cameraComponent = new BoxLoader.CameraComponent();
+    public BoxLoader.CameraComponent camera { get { return (BoxLoader.CameraComponent)GetComponent(GameComponentsLookup.Camera); } }
+    public bool hasCamera { get { return HasComponent(GameComponentsLookup.Camera); } }
 
-    public bool isCamera {
-        get { return HasComponent(GameComponentsLookup.Camera); }
-        set {
-            if (value != isCamera) {
-                var index = GameComponentsLookup.Camera;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : cameraComponent;
+    public void AddCamera(UnityEngine.Camera newValue) {
+        var index = GameComponentsLookup.Camera;
+        var component = (BoxLoader.CameraComponent)CreateComponent(index, typeof(BoxLoader.CameraComponent));
+        component.value = newValue;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceCamera(UnityEngine.Camera newValue) {
+        var index = GameComponentsLookup.Camera;
+        var component = (BoxLoader.CameraComponent)CreateComponent(index, typeof(BoxLoader.CameraComponent));
+        component.value = newValue;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveCamera() {
+        RemoveComponent(GameComponentsLookup.Camera);
     }
 }
 

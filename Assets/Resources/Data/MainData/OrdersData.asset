@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8a39c7d4464319b756456e86a2a9f2, type: 3}
   m_Name: OrdersData
   m_EditorClassIdentifier: 
-  _baseTimePerOneBox: 5
+  _baseTimePerOneBox: 15
   _startCountBoxesInOrder: 3
   _multiplyingCoefficient: 1.33
   _maxCountBoxesInOrder: 10

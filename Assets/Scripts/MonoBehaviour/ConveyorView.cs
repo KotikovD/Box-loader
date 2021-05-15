@@ -13,9 +13,13 @@ namespace BoxLoader
 		[ReadOnly] 
 		[SerializeField] private ConveyorMode _conveyorMode;
 		[SerializeField] private Renderer _movingBelt;
+		[SerializeField] private Transform _orderUiPoint;
 		[SerializeField] private Transform _innerPoint;
 		[SerializeField] private Transform _outPoint;
 		[SerializeField] private Table _table;
+		[SerializeField] private Lamp _lamp;
+		
+		
 
 		private Material _beltMaterial;
 		private int _beltScrollSpeedId;
@@ -25,12 +29,15 @@ namespace BoxLoader
 		private float _workingSpeed;
 
 		public Vector3 DestinationMovePoint => _destinationMovePoint.position;
+		public Vector3 OrderUiPoint => _orderUiPoint.position;
 		public Vector3 StartMovePoint => _startMovePoint.position;
+		public Vector3 StartMovePointGlobal => transform.TransformPoint(_startMovePoint.position);
+		
 		public Table Table => _table;
+		public Lamp Lamp => _lamp;
 
 		public Vector3 GetLoadPoint(float usingOffset, float maxExtent)
 		{
-			//var pivot = transform.localPosition;
 			var offset = maxExtent + usingOffset;
 			var interactPointOneSide = new Vector3(offset, StartMovePoint.y, offset) * -1;
 			

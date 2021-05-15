@@ -5,15 +5,21 @@ using Entitas;
 
 namespace BoxLoader
 {
-	public class ConveyorsSetModeReactiveSystem : ReactiveSystem<GameEntity>
+	public class ConveyorsSetModeReactiveSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 	{
 		private readonly Contexts _context;
-
+		private OrderConveyorUiData _orderUiData;
+		
 		public ConveyorsSetModeReactiveSystem(Contexts context) : base(context.game)
 		{
 			_context = context;
 		}
-
+		
+		public void Initialize()
+		{
+			_orderUiData = _context.game.dataService.value.OrderConveyorUiData;
+		}
+		
 		protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
 			return context.CreateCollector(GameMatcher.ConveyorView.Added());
@@ -36,15 +42,24 @@ namespace BoxLoader
 						entity.isConveyorSubmitter = true;
 						entity.AddOrder(new List<BoxesOrder>(), int.MinValue, float.MinValue);
 						entity.AddOrderTimer(0);
+						var orderUiViewEntity = _context.game.CreateEntity();
+						orderUiViewEntity.AddAsset(_orderUiData.AssetName, _orderUiData.SceneParentName);
+						orderUiViewEntity.AddConveyor(entity);
+						
+						
 						break;
+					
 					case ConveyorMode.Receiver:
 						entity.isConveyorReceiver = true;
 						break;
+					
 					default:
 						throw new ArgumentOutOfRangeException();
 				}
 
 			}
 		}
+
+		
 	}
 }

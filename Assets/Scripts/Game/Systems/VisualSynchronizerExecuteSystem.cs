@@ -14,12 +14,14 @@ namespace BoxLoader
 		
 		public void Execute()
 		{
-			var enties = _context.game.GetEntities(GameMatcher.AllOf(GameMatcher.ObjectsView, GameMatcher.Position, GameMatcher.Rotation));
-			foreach (var e in enties)
+			var entitiesGroup = _context.game.GetEntities(GameMatcher.AllOf(GameMatcher.ObjectsView, GameMatcher.Position, GameMatcher.Rotation));
+			foreach (var e in entitiesGroup)
 			{
 				e.ReplacePosition(e.objectsView.Value.GetPosition);
 				e.ReplaceRotation(e.objectsView.Value.GetLocalRotation);
 			}
+			
+			
 		}
 		
 	}

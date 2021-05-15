@@ -49,7 +49,7 @@ namespace BoxLoader
 			}
 			else
 			{
-				var submitters = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.ConveyorSubmitter));
+				var submitters = _gameContext.GetGroup(GameMatcher.AllOf(GameMatcher.ConveyorSubmitter, GameMatcher.Order));
 				if (usingEntities.count > 0 && FindClosestTable(sourceTarget, submitters, out var conveyor))
 				{
 					SubmitBox(usingEntities, conveyor);
@@ -70,8 +70,8 @@ namespace BoxLoader
 				.Then(() => _playerEntity.character.Value.DropBox(0.15f)) //TODO move to const
 				.Then(() =>
 				{
-					box.objectsView.Value.SetPosition(conveyor.conveyorView.value.StartMovePoint);
 					box.objectsView.Value.SetParent(_boxPoolParent);
+					box.objectsView.Value.SetPosition(conveyor.conveyorView.value.StartMovePoint);
 					box.isUsing = false;
 					box.isSubmittedBox = true;
 					conveyor.boxes.value.Add(box);

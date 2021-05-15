@@ -16,3 +16,5 @@ MonoBehaviour:
   _startRotation: {x: 0, y: 0, z: 0}
   _sceneParentName: 5
   _boxType: 0
+  _scorePoints: 20
+  _localizationKey: '#box_plastic'

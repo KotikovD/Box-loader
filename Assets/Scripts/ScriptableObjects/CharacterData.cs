@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "GameData/CharacterData")]
-public sealed partial class CharacterData : ScriptableObjectExt
+public sealed class CharacterData : ScriptableObjectExt
 {
 	[Header("View")]
 	[SerializeField] private string _assetName;

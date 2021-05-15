@@ -16,6 +16,7 @@ public sealed class BoxData : ScriptableObjectExt
 	[Header("Box")] 
 	[SerializeField] private BoxType _boxType;
 	[SerializeField] private int _scorePoints;
+	[SerializeField , Tooltip("Localization key for box name")] private string _localizationKey;
 
 	
 	public override Vector3 GetPosition => _startPosition;
@@ -24,5 +25,6 @@ public sealed class BoxData : ScriptableObjectExt
 	public override SceneParentName SceneParentName => _sceneParentName;
 	public  BoxType BoxType => _boxType;
 	public  int ScorePoints => _scorePoints;
+	public  string LocalizationKey => _localizationKey;
 	
 }

@@ -16,7 +16,7 @@ MonoBehaviour:
   - _tag: 0
     _name: /
   - _tag: 1
-    _name: /
+    _name: Canvas
   - _tag: 2
     _name: Level
   - _tag: 4

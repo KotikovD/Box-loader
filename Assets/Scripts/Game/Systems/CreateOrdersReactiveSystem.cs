@@ -21,22 +21,26 @@ namespace BoxLoader
 
 		protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
 		{
-			return context.CreateCollector(GameMatcher.Order.Added());
+			return context.CreateCollector(GameMatcher.ReadyForOrders.Added());
 		}
 
 		protected override bool Filter(GameEntity entity)
 		{
-			return true;
+			return _context.hasScore;
 		}
 
 		protected override void Execute(List<GameEntity> entities)
 		{
 			foreach (var gameEntity in entities)
 			{
+				if(gameEntity.hasStandByTimer)
+					gameEntity.RemoveStandByTimer();
+				
+				gameEntity.isReadyForOrders = false;
 				var generatedOrder = GenerateOrder();
-				gameEntity.order.value = generatedOrder.order;
-				gameEntity.order.duration = generatedOrder.seconds;
-				gameEntity.order.startTime = generatedOrder.stratTime;
+				gameEntity.ReplaceOrder(generatedOrder.order, generatedOrder.seconds, generatedOrder.stratTime);
+				gameEntity.ReplaceOrderTimer(generatedOrder.seconds);
+				gameEntity.orderUiView.value.CreateOrderUi(gameEntity.order.value, gameEntity.order.duration);
 			}
 		}
 		
@@ -49,15 +53,17 @@ namespace BoxLoader
 				: 1;
 
 			var boxesCount = _ordersData.StartCountBoxesInOrder * coeficient;
-			boxesCount = boxesCount > _ordersData.MaxCountBoxesInOrder ? _ordersData.MaxCountBoxesInOrder : boxesCount;
+			boxesCount = boxesCount > _ordersData.MaxCountBoxesInOrder ? _ordersData.MaxCountBoxesInOrder : (int)boxesCount;
 			
 			for (var i = 0; i < boxesCount; i++)
 			{
 				var index = UnityEngine.Random.Range(0, _maxBoxTypes.Length);
-				result.Add(new BoxesOrder((BoxType)_maxBoxTypes.GetValue(index), false));
+				var boxType = (BoxType) _maxBoxTypes.GetValue(index);
+				var localizationKey = _context.dataService.value.BoxesData.Find(b => b.BoxType == boxType).LocalizationKey;
+				result.Add(new BoxesOrder(boxType, Localization.GetKeyValue(localizationKey),false));
 			}
 			
-			var seconds = Mathf.RoundToInt(result.Count * _ordersData.BaseTimePerOneBox);
+			var seconds = Mathf.RoundToInt(boxesCount * _ordersData.BaseTimePerOneBox);
 			
 			return (result, seconds, Time.time);
 		}

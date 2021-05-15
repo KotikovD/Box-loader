@@ -11,4 +11,5 @@ public interface IDataService
 	public List<SomeObjectData> SomeObjectsData { get; }
 	public List<BoxData> BoxesData { get; }
 	List<GameUiData> GameUiData { get; }
+	OrderConveyorUiData OrderConveyorUiData { get; }
 }

@@ -15,4 +15,5 @@ MonoBehaviour:
   _dataFolder: Data
   _prefabsFolder: Prefabs
   _camera: CameraData
-  _player: PlayerData
+  _character: CharacterData
+  _orderConveyorUiData: OrderConveyorUiData

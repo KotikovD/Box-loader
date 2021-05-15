@@ -29,7 +29,10 @@ namespace BoxLoader
 				
 				if (AllowedToMoveBoxes(conveyor))
 				{
-					MoveBoxes(conveyor);
+					if (conveyor.isConveyorSubmitter)
+						SubmitterMoveBoxes(conveyor);
+					else
+						ReceiverMoveBoxes(conveyor);
 				}
 				else
 				{
@@ -49,7 +52,21 @@ namespace BoxLoader
 				firstBox.isRemove = true;
 		}
 
-		private void MoveBoxes(GameEntity entity)
+		private void SubmitterMoveBoxes(GameEntity entity)
+		{
+			var target = entity.conveyorView.value.DestinationMovePoint;
+			var speed = entity.conveyorData.value.WorkingSpeed; //TODO Sincronize speed shader and boxes 
+
+			entity.conveyorView.value.Activate();
+			
+			foreach (var box in entity.boxes.value)
+			{
+				box.boxView.value.SubmitterAnimationMove(target, speed);
+			}
+
+		}
+
+		private void ReceiverMoveBoxes(GameEntity entity)
 		{
 			var target = entity.conveyorView.value.DestinationMovePoint;
 			var speed = entity.conveyorData.value.WorkingSpeed; //TODO Sincronize speed shader and boxes 
@@ -62,7 +79,7 @@ namespace BoxLoader
 			}
 
 		}
-
+		
 		private void StopMovingBoxes(GameEntity entity)
 		{
 			entity.conveyorView.value.Stop();

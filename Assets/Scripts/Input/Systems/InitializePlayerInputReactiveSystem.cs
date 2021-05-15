@@ -21,7 +21,6 @@ namespace BoxLoader
 		{
 			_contexts = contexts;
 			_layerMask = LayerMask.NameToLayer(LayerNamesKeeper.Character);
-			
 		}
 		
 		public void Initialize()
@@ -48,6 +47,10 @@ namespace BoxLoader
 		protected override void Execute(List<GameEntity> entities)
 		{
 			_camera = _contexts.game.cameraEntity.objectsView.Value.GameObject.GetComponent<Camera>();
+			
+			foreach (var gameEntity in entities)
+				gameEntity.camera.value = _camera;
+			
 		}
 
 		private void Move(bool isUse)

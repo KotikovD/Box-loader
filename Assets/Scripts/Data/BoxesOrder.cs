@@ -4,10 +4,12 @@
 	{
 		public BoxType BoxType { get; }
 		public bool IsComplete { get; set; }
+		public string BoxLocalization { get; }
 
-		public BoxesOrder(BoxType boxType, bool isComplete)
+		public BoxesOrder(BoxType boxType, string boxLocalization, bool isComplete)
 		{
 			BoxType = boxType;
+			BoxLocalization = boxLocalization;
 			IsComplete = isComplete;
 		}
 	}

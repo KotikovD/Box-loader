@@ -15,16 +15,17 @@ namespace BoxLoader
 		[SerializeField] private BoxCollider _collider;
 		
 		private Bounds _bounds;
-		private Sequence _moveTween;
+		private Sequence _moveTweenSubmitter;
 		private bool _isAnimationMove;
 		private float _maxExtent;
-		private TweenerCore<Vector3, Vector3, VectorOptions> _moveTween1;
+		private TweenerCore<Vector3, Vector3, VectorOptions> _moveTweenerReceiver;
+		private TweenerCore<Vector3, Vector3, VectorOptions> _moveTween2;
 		public float MaxExtent => _maxExtent;
 
 		private void Start()
 		{
 			_bounds = _collider.bounds;
-			_maxExtent = Mathf.Max(_bounds.extents.x,_bounds.extents.y,_bounds.extents.z);
+			_maxExtent = Mathf.Max(_bounds.extents.x, _bounds.extents.y, _bounds.extents.z);
 		}
 
 		public Vector3 ClosestPoint(Vector3 point)
@@ -62,59 +63,41 @@ namespace BoxLoader
 			return result;
 		}
 
+
+		
 		public void StopAnimationMoving()
 		{
-			_moveTween1?.Pause();
+			_moveTweenerReceiver?.Pause();
+			_moveTweenSubmitter?.Pause();
 		}
+
 		public void AnimationMove(Vector3 target, float speed)
 		{
-			if (_moveTween1.IsActive())
-				//if(_moveTween != null)
+			if (_moveTweenerReceiver.IsActive())
 			{
-				_moveTween1.Play();
+				_moveTweenerReceiver.Play();
 			}
 			else
 			{
-				_moveTween1 = transform.DOMove(target, speed).SetEase(Ease.Linear);
-				_moveTween1.ChangeStartValue(transform.position);
+				_moveTweenerReceiver = transform.DOMove(target, speed).SetEase(Ease.Linear);
+				_moveTweenerReceiver.ChangeStartValue(transform.position);
 			}
-			
 			
 		}
-		
-		public void AnimationMove1(Vector3 target, float speed)
+
+		public void SubmitterAnimationMove(Vector3 target, float speed)
 		{
-			if (_moveTween.IsActive())
-			//if(_moveTween != null)
+			if (_moveTweenSubmitter.IsActive())
 			{
-				_moveTween.Play();
+				_moveTweenSubmitter.Play();
 			}
 			else
 			{
-				_moveTween?.Kill();
+				_moveTweenSubmitter?.Kill();
 				var tween = DOTween.Sequence();
-
-				var r = transform.DOMove(target, speed)
-					.SetEase(Ease.Linear);
 				tween.Append(transform.DOMove(target, speed).SetEase(Ease.Linear));
-
-				tween.SetAutoKill(true);
-				tween.OnComplete(()=> tween = null);
-					//.OnComplete(() => _moveTween = null);
-					//.SetRecyclable(true); fsdf
-
-					//.OnComplete(() => transform.DORestart());
-						//.SetAutoKill(true)
-				//tween.Append(DOTween.To(() => transform.localPosition, x=> transform.localPosition = x, target, speed).SetEase(Ease.Linear).OnComplete(()=>transform.DORestart()));
-				
-				
-				
-				_moveTween = tween;
-				//_moveTween.OnComplete(() => _moveTween = null);
-				//_moveTween.SetAutoKill(true);
+				_moveTweenSubmitter = tween;
 			}
-			
-			
 		}
 
 		public IPromise DropAnimation(float speed)

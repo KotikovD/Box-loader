@@ -1,5 +1,6 @@
 ﻿using Entitas;
 using Entitas.CodeGeneration.Attributes;
+using UnityEngine;
 
 namespace BoxLoader
 {
@@ -7,5 +8,6 @@ namespace BoxLoader
 	[Unique]
 	public sealed class CameraComponent : IComponent
 	{
+		public Camera value;
 	}
 }

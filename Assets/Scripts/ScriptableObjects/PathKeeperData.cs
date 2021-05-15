@@ -12,12 +12,14 @@ namespace BoxLoader
 		[Header("ScriptableObjectFilesNames")]
 		[SerializeField] private string _camera = "CameraData";
 		[SerializeField] private string _character = "CharacterData";
+		[SerializeField] private string _orderConveyorUiData = "OrderConveyorUiData";
 		
 		public string DataFolder => _dataFolder;
 
 		public string PrefabsFolder => _prefabsFolder;
 
 		public string Camera => _camera;
+		public string OrderConveyorUi => _orderConveyorUiData;
 
 		public string Character => _character;
 	}

@@ -16,30 +16,35 @@ public static class GameComponentsLookup {
     public const int Camera = 5;
     public const int Character = 6;
     public const int CharacterData = 7;
-    public const int ConveyorData = 8;
-    public const int ConveyorReceiver = 9;
-    public const int ConveyorSubmitter = 10;
-    public const int ConveyorView = 11;
-    public const int ObjectsView = 12;
-    public const int OrderCompleted = 13;
-    public const int Order = 14;
-    public const int OrderFinished = 15;
-    public const int OrderTimer = 16;
-    public const int Player = 17;
-    public const int Position = 18;
-    public const int ReadyForUse = 19;
-    public const int Remove = 20;
-    public const int Rotation = 21;
-    public const int Score = 22;
-    public const int SubmittedBox = 23;
-    public const int Using = 24;
-    public const int WantToUse = 25;
-    public const int CharacterService = 26;
-    public const int DataService = 27;
-    public const int PositionListener = 28;
-    public const int ViewObjectsService = 29;
+    public const int Conveyor = 8;
+    public const int ConveyorData = 9;
+    public const int ConveyorReceiver = 10;
+    public const int ConveyorSubmitter = 11;
+    public const int ConveyorView = 12;
+    public const int ObjectsView = 13;
+    public const int OrderCompleted = 14;
+    public const int Order = 15;
+    public const int OrderFinished = 16;
+    public const int OrderTimer = 17;
+    public const int OrderUiView = 18;
+    public const int Player = 19;
+    public const int Position = 20;
+    public const int ReadyForOrders = 21;
+    public const int ReadyForUse = 22;
+    public const int Remove = 23;
+    public const int Rotation = 24;
+    public const int Score = 25;
+    public const int StandByTimer = 26;
+    public const int SubmittedBox = 27;
+    public const int UiView = 28;
+    public const int Using = 29;
+    public const int WantToUse = 30;
+    public const int CharacterService = 31;
+    public const int DataService = 32;
+    public const int PositionListener = 33;
+    public const int ViewObjectsService = 34;
 
-    public const int TotalComponents = 30;
+    public const int TotalComponents = 35;
 
     public static readonly string[] componentNames = {
         "AnyPlayerListener",
@@ -50,6 +55,7 @@ public static class GameComponentsLookup {
         "Camera",
         "Character",
         "CharacterData",
+        "Conveyor",
         "ConveyorData",
         "ConveyorReceiver",
         "ConveyorSubmitter",
@@ -59,13 +65,17 @@ public static class GameComponentsLookup {
         "Order",
         "OrderFinished",
         "OrderTimer",
+        "OrderUiView",
         "Player",
         "Position",
+        "ReadyForOrders",
         "ReadyForUse",
         "Remove",
         "Rotation",
         "Score",
+        "StandByTimer",
         "SubmittedBox",
+        "UiView",
         "Using",
         "WantToUse",
         "CharacterService",
@@ -83,6 +93,7 @@ public static class GameComponentsLookup {
         typeof(BoxLoader.CameraComponent),
         typeof(BoxLoader.CharacterComponent),
         typeof(BoxLoader.CharacterDataComponent),
+        typeof(BoxLoader.ConveyorComponent),
         typeof(BoxLoader.ConveyorDataComponent),
         typeof(BoxLoader.ConveyorReceiverComponent),
         typeof(BoxLoader.ConveyorSubmitterComponent),
@@ -92,13 +103,17 @@ public static class GameComponentsLookup {
         typeof(BoxLoader.OrderComponent),
         typeof(BoxLoader.OrderFinishedComponent),
         typeof(BoxLoader.OrderTimerComponent),
+        typeof(BoxLoader.OrderUiViewComponent),
         typeof(BoxLoader.PlayerComponent),
         typeof(BoxLoader.PositionComponent),
+        typeof(BoxLoader.ReadyForOrdersComponent),
         typeof(BoxLoader.ReadyForUseComponent),
         typeof(BoxLoader.RemoveComponent),
         typeof(BoxLoader.RotationComponent),
         typeof(BoxLoader.ScoreComponent),
+        typeof(BoxLoader.StandByTimerComponent),
         typeof(BoxLoader.SubmittedBoxComponent),
+        typeof(BoxLoader.UiViewComponent),
         typeof(BoxLoader.UsingComponent),
         typeof(BoxLoader.WantToUseComponent),
         typeof(CharacterServiceComponent),
