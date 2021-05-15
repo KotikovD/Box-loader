@@ -11,8 +11,7 @@ namespace BoxLoader
 		readonly GameContext _gameContext;
 		readonly InputContext _inputContext;
 		private GameEntity _playerEntity;
-		private float maxDistanceForSearchUsedObjects = 1.5f; //TODO move to constants
-		private float boxesUsingOffset = 0.3f; //TODO move to constants
+		
 		private MainOptions _mainOptions;
 		private Transform _boxPoolParent;
 
@@ -64,10 +63,10 @@ namespace BoxLoader
 		private void SubmitBox(IGroup<GameEntity> usingEntities, GameEntity conveyor)
 		{
 			var box = usingEntities.GetSingleEntity();
-			var movePoint = conveyor.conveyorView.value.GetLoadPoint(boxesUsingOffset, box.boxView.value.MaxExtent);
+			var movePoint = conveyor.conveyorView.value.GetLoadPoint(_gameContext.dataService.value.Constants.BoxesUsingOffset, box.boxView.value.MaxExtent);
 			_playerEntity.character.Value.Move(movePoint)
 				.Then(() => _playerEntity.character.Value.LookAt(conveyor.objectsView.Value.GetPosition))
-				.Then(() => _playerEntity.character.Value.DropBox(0.15f)) //TODO move to const
+				.Then(() => _playerEntity.character.Value.DropBox(_gameContext.dataService.value.Constants.AnimationDropBoxEvent))
 				.Then(() =>
 				{
 					box.objectsView.Value.SetParent(_boxPoolParent);
@@ -98,8 +97,8 @@ namespace BoxLoader
 			var one = usingEntities.GetSingleEntity();
 			one.objectsView.Value.SetParent(_boxPoolParent);
 			one.isUsing = false;
-			_playerEntity.character.Value.DropBox(0.15f) //TODO move to const
-				.Then(() => one.boxView.value.DropAnimation(0.7f)) //TODO move to const
+			_playerEntity.character.Value.DropBox(_gameContext.dataService.value.Constants.AnimationDropBoxEvent)
+				.Then(() => one.boxView.value.DropAnimation(_gameContext.dataService.value.Constants.DropBoxFallSpeed))
 				.Then(() => one.isRemove = true);
 		}
 
@@ -112,7 +111,7 @@ namespace BoxLoader
 			{
 				var currentDistance = Vector3.Distance(sourceTarget, one.objectsView.Value.GetPosition);
 
-				if (currentDistance < maxDistanceForSearchUsedObjects && currentDistance < closestDistance)
+				if (currentDistance < _gameContext.dataService.value.Constants.MaxDistanceForSearchUsedObjects && currentDistance < closestDistance)
 				{
 					closestDistance = currentDistance;
 					closestEntity = one;
@@ -131,7 +130,7 @@ namespace BoxLoader
 			{
 				var currentDistance = Vector3.Distance(sourceTarget, one.conveyorView.value.Table.Position);
 
-				if (currentDistance < maxDistanceForSearchUsedObjects && currentDistance < closestDistance)
+				if (currentDistance < _gameContext.dataService.value.Constants.MaxDistanceForSearchUsedObjects && currentDistance < closestDistance)
 				{
 					closestDistance = currentDistance;
 					closestEntity = one;
@@ -148,7 +147,7 @@ namespace BoxLoader
 			if (entity.hasBoxView)
 			{
 				var currentPosition = _playerEntity.objectsView.Value.GetPosition;
-				var posVariants = entity.boxView.value.GetUsingPositions(boxesUsingOffset);
+				var posVariants = entity.boxView.value.GetUsingPositions(_gameContext.dataService.value.Constants.BoxesUsingOffset);
 				var closestDistance = float.MaxValue;
 
 				foreach (var pos in posVariants)

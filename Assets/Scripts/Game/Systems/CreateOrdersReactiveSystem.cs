@@ -60,7 +60,8 @@ namespace BoxLoader
 				var index = UnityEngine.Random.Range(0, _maxBoxTypes.Length);
 				var boxType = (BoxType) _maxBoxTypes.GetValue(index);
 				var localizationKey = _context.dataService.value.BoxesData.Find(b => b.BoxType == boxType).LocalizationKey;
-				result.Add(new BoxesOrder(boxType, Localization.GetKeyValue(localizationKey),false));
+				var localization = _context.dataService.value.Localization.GetKeyValue(localizationKey);
+				result.Add(new BoxesOrder(boxType, localization,false));
 			}
 			
 			var seconds = Mathf.RoundToInt(boxesCount * _ordersData.BaseTimePerOneBox);

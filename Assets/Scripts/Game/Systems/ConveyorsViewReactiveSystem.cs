@@ -27,7 +27,7 @@ namespace BoxLoader
 			foreach (var entity in entities)
 			{
 				var view = entity.objectsView.Value.GameObject.GetComponent<ConveyorView>();
-				view.InitializeView(entity);
+				view.InitializeView(entity, _context);
 				entity.AddConveyorView(view);
 			}
 		}

@@ -26,12 +26,14 @@ namespace BoxLoader
 		private bool _isInitialized;
 		private Sequence _lookTween;
 		private IPromiseTimer promiseTimer;
-		
-		
+		private GameContext _gameContext;
+
+
 		public Transform CarryPoint => _carryPoint.transform;
 		
-		public void InitializeView(GameEntity entity)
+		public void InitializeView(GameEntity entity, GameContext gameContext)
 		{
+			_gameContext = gameContext;
 			promiseTimer = new PromiseTimer();
 			entity.AddCharacter(this);
 			_characterData = entity.characterData.value;
@@ -119,7 +121,7 @@ namespace BoxLoader
 			var promise = new Promise();
 			_lookTween?.Kill();
 			var lookTween = DOTween.Sequence();
-			lookTween.Append(transform.DOLookAt(target,0.3f, AxisConstraint.Y).OnComplete(promise.Resolve)); //TODO move dur to const
+			lookTween.Append(transform.DOLookAt(target, _gameContext.dataService.value.Constants.CharactersLookAtDuration, AxisConstraint.Y).OnComplete(promise.Resolve));
 			_lookTween = lookTween;
 
 			return promise;

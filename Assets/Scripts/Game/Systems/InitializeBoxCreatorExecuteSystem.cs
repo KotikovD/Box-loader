@@ -12,7 +12,6 @@ namespace BoxLoader
 		private readonly Contexts _context;
 		private List<BoxData> _boxesData;
 		private readonly Array _maxBoxTypes;
-		private float _minDistanceBetweenBoxes = 2.3f; //TODO move to constants
 
 		public InitializeBoxCreatorExecuteSystem(Contexts context)
 		{
@@ -64,7 +63,7 @@ namespace BoxLoader
 				return false;
 
 			var currentDistance = Vector3.Distance(boxView.ClosestPoint(startMovingPoint), startMovingPoint);
-			if (_minDistanceBetweenBoxes > currentDistance)
+			if (_context.game.dataService.value.Constants.MnDistanceBetweenBoxes > currentDistance)
 				return false;
 
 			return true;

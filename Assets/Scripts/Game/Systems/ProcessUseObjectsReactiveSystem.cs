@@ -43,7 +43,7 @@ namespace BoxLoader
 				}
 			}
 			
-			_playerEntity.character.Value.Pickup(0.25f) //TODO move to const
+			_playerEntity.character.Value.Pickup(_context.dataService.value.Constants.AnimationPickupBoxEvent)
 				.Then(() =>
 				{
 					box.isWantToUse = false;

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca8710929804455b5f597353a8f7595, type: 3}
+  m_Name: LocalizationData
+  m_EditorClassIdentifier: 
+  _keys:
+  - _tag: '#score'
+    _name: SCORE
+  - _tag: '#box_metal'
+    _name: Metal
+  - _tag: '#box_wood'
+    _name: Wood
+  - _tag: '#box_plastic'
+    _name: Plastic
+  - _tag: '#no_order_localization_key'
+    _name: Standby

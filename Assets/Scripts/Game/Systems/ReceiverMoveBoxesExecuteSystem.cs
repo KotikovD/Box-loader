@@ -12,7 +12,6 @@ namespace BoxLoader
 		private readonly Contexts _context;
 		private List<BoxData> _boxesData; 
 		private Sequence _moveTween;
-		private float _boxStopDistanceConst = 0.1f;  //TODO move to constants
 
 		public ConveyorsMoveBoxesExecuteSystem(Contexts context)
 		{
@@ -98,7 +97,7 @@ namespace BoxLoader
 		{
 			var firstBox = entity.boxes.value.First();
 			
-			if(Vector3.Distance(firstBox.objectsView.Value.GetPosition,entity.conveyorView.value.DestinationMovePoint) < _boxStopDistanceConst)
+			if(Vector3.Distance(firstBox.objectsView.Value.GetPosition,entity.conveyorView.value.DestinationMovePoint) < _context.game.dataService.value.Constants.BoxStopDistanceConst)
 				return false;
 
 			return true;

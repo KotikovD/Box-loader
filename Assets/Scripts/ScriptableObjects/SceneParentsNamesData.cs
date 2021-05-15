@@ -8,12 +8,11 @@ namespace BoxLoader
 	[CreateAssetMenu(menuName = "MainOptions/SceneGameObjectsHierarchy")]
 	public sealed class SceneParentsNamesData : ScriptableObject, ISceneParentsNamesData
 	{
-		[SerializeField] private List<NameData> _names;
+		[SerializeField] private List<NameData<SceneParentName, string>> _names;
 		private readonly Dictionary<SceneParentName, string> _parents = new Dictionary<SceneParentName, string>();
 
 		public Dictionary<SceneParentName, string> Parents
 		{
-			//TODO move to generic utils
 			get
 			{
 				foreach (var nameData in _names)
@@ -32,11 +31,10 @@ namespace BoxLoader
 		}
 		
 		[Serializable]
-		private sealed class NameData
+		private sealed class NameData<T,S>
 		{
-			[SerializeField] internal SceneParentName _tag;
-			[SerializeField] internal string _name;
+			[SerializeField] internal T _tag;
+			[SerializeField] internal S _name;
 		}
-		
 	}
 }

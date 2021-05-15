@@ -6,7 +6,7 @@ namespace BoxLoader
 {
 	public interface ICharacterView
 	{
-		void InitializeView(GameEntity entity);
+		void InitializeView(GameEntity entity, GameContext gameContext);
 		IPromise Move(Vector3 destinationPoint);
 		IPromise Pickup(float animationEventTime);
 		IPromise DropBox(float animationEventTime);

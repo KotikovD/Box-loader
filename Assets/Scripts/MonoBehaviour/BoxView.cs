@@ -51,15 +51,7 @@ namespace BoxLoader
 			
 			 result.Add(pivot + transform.forward.MultiplyTwoDirections(interactPointOneSide));
 			 result.Add(pivot + transform.forward.MultiplyTwoDirections(interactPointSecondSide));
-
-			var r0 = GameObject.CreatePrimitive(PrimitiveType.Sphere); //TODO remove
-			r0.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-			r0.transform.position = result[0];
-
-			var r1 = GameObject.CreatePrimitive(PrimitiveType.Sphere); //TODO remove
-			r1.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-			r1.transform.position = result[1];
-			
+			 
 			return result;
 		}
 

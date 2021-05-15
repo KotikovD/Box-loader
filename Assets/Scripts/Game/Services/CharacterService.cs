@@ -17,7 +17,7 @@ namespace BoxLoader
 			if (characterComponent == null)
 				entity.objectsView.Value.GameObject.AddComponent<CharacterView>();
 
-			characterComponent.InitializeView(entity);
+			characterComponent.InitializeView(entity, context);
 		}
 
 		public void DestroyCharacter(GameEntity entity)

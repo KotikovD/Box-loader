@@ -33,7 +33,7 @@ namespace BoxLoader
 				gameEntity.RemoveOrder();
 				gameEntity.RemoveOrderTimer();
 				gameEntity.orderUiView.value.RemoveCurrentOrder(true);
-				gameEntity.AddStandByTimer(Time.time, 5f); //TODO move to config
+				gameEntity.AddStandByTimer(Time.time, _context.dataService.value.Constants.StandbyTimeBetweenOrders);
 				gameEntity.conveyorView.value.Lamp.NoOrderLampBehaviour();
 			}
 		}

@@ -61,7 +61,6 @@ namespace BoxLoader
 			{
 				_inputEntity.ReplaceTarget(hit.point);
 				_inputEntity.isUse = isUse;
-				Debug.Log("Move to " + hit.point + " Use = " + isUse); //TODO remove
 			}
 		}
 		

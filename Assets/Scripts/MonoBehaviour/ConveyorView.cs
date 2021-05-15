@@ -27,7 +27,8 @@ namespace BoxLoader
 		private Transform _destinationMovePoint;
 		private Transform _startMovePoint;
 		private float _workingSpeed;
-
+		private GameContext _gameContext;
+		
 		public Vector3 DestinationMovePoint => _destinationMovePoint.position;
 		public Vector3 OrderUiPoint => _orderUiPoint.position;
 		public Vector3 StartMovePoint => _startMovePoint.position;
@@ -43,10 +44,6 @@ namespace BoxLoader
 			
 			var result = StartMovePoint + transform.forward.MultiplyTwoDirections(interactPointOneSide);
 			
-			var r0 = GameObject.CreatePrimitive(PrimitiveType.Sphere); //TODO remove
-			r0.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-			r0.transform.position = result;
-			
 			return result;
 		}
 		
@@ -59,8 +56,9 @@ namespace BoxLoader
 			}
 		}
 
-		public void InitializeView(GameEntity entity)
+		public void InitializeView(GameEntity entity, GameContext gameContext)
 		{
+			_gameContext = gameContext;
 			_beltMaterial = _movingBelt.material;
 			_beltScrollSpeedId = Shader.PropertyToID("_ScrollYSpeed");
 			_conveyorData = entity.conveyorData.value;
@@ -97,7 +95,7 @@ namespace BoxLoader
 		
 		public void Stop()
 		{
-			_beltMaterial.SetFloat(_beltScrollSpeedId, 0f); //TODO плавная остановка
+			_beltMaterial.SetFloat(_beltScrollSpeedId, 0f);
 		}
 		
 	}

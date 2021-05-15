@@ -34,7 +34,7 @@ namespace BoxLoader
 			foreach (var gameEntity in entities)
 			{
 				var orderUiView = gameEntity.objectsView.Value.GameObject.GetComponent<IOrderUiView>();
-				var localization = Localization.GetKeyValue(_orderUiData.NoOrderLocalizationKey);
+				var localization = _context.dataService.value.Localization.GetKeyValue(_orderUiData.NoOrderLocalizationKey);
 
 				orderUiView.Initialize(
 					_orderUiData.OrderStrokeUiView,

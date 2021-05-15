@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BoxLoader;
 using Entitas.CodeGeneration.Attributes;
 
 
@@ -12,4 +13,6 @@ public interface IDataService
 	public List<BoxData> BoxesData { get; }
 	List<GameUiData> GameUiData { get; }
 	OrderConveyorUiData OrderConveyorUiData { get; }
+	public LocalizationData Localization { get; }
+	public ConstantsData Constants { get; }
 }

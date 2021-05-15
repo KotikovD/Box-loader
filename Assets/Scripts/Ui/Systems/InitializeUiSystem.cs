@@ -40,7 +40,7 @@ namespace BoxLoader
 			foreach (var entity in entities)
 			{
 				var view = entity.objectsView.Value.GameObject.GetComponent<UiView>();
-				view.Label = Localization.GetKeyValue(view.LabelLocalizationKey);
+				view.Label = _contexts.game.dataService.value.Localization.GetKeyValue(view.LabelLocalizationKey);
 				view.Count = "0";
 				entity.AddUiView(view);
 			}
